@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Casa Torres S.C. – Boutique Law Firm especializado en litigio constitucional, administrativo y penal en México e internacional."/>
+  <title>Casa Torres S.C. | Boutique Law Firm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;500;600;700;900&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── VARIABLES ── */
+    :root {
+      --gd: #0d2b1e; --gk: #1a3d2a; --ga: #2e6b49;
+      --go: #c9a84c; --gl: #e2c47a;
+      --w:  #f8f5ee; --wd: rgba(248,245,238,.70); --wg: rgba(248,245,238,.06);
+      --fd: 'Cinzel','Georgia',serif;
+      --fb: 'Cormorant Garamond','Georgia',serif;
+      --fu: 'Jost','Arial',sans-serif;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--gd); color: var(--w); font-family: var(--fb); overflow-x: hidden; }
+
+    /* ── CURSOR PERSONALIZADO MEJORADO ── */
+    @media (pointer: fine) {
+      body { cursor: none; }
+
+      #cursor {
+        position: fixed; z-index: 9999; pointer-events: none;
+        width: 10px; height: 10px;
+        background: var(--go); border-radius: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition: width .22s cubic-bezier(.34,1.56,.64,1), 
+                    height .22s cubic-bezier(.34,1.56,.64,1),
+                    background .18s ease, opacity .25s ease,
+                    box-shadow .22s ease;
+        box-shadow: 0 0 15px rgba(201,168,76,.7), 
+                    0 0 30px rgba(201,168,76,.3),
+                    0 0 45px rgba(201,168,76,.1);
+        will-change: left, top, transform;
+      }
+
+      #cursor-ring {
+        position: fixed; z-index: 9998; pointer-events: none;
+        width: 44px; height: 44px;
+        border: 1.5px solid rgba(201,168,76,.65);
+        border-radius: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition: width .42s cubic-bezier(.23,1,.32,1),
+                    height .42s cubic-bezier(.23,1,.32,1),
+                    border-color .28s, opacity .25s,
+                    transform .35s cubic-bezier(.23,1,.32,1);
+        will-change: left, top;
+      }
+
+      /* Cruz tipo brújula con animación de rotación */
+      #cursor-ring::before, #cursor-ring::after {
+        content: ''; position: absolute;
+        background: rgba(201,168,76,.28);
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        transition: opacity .25s, transform .4s ease;
+      }
+      #cursor-ring::before { width: 1px; height: 55%; }
+      #cursor-ring::after  { width: 55%; height: 1px; }
+
+      /* Etiqueta flotante mejorada */
+      #cursor-label {
+        position: fixed; z-index: 9997; pointer-events: none;
+        font-family: var(--fu); font-size: .48rem; letter-spacing: .24em;
+        text-transform: uppercase; color: var(--gl);
+        white-space: nowrap; opacity: 0;
+        transform: translate(22px, -50%) scale(0.8);
+        transition: opacity .25s ease, transform .3s cubic-bezier(.34,1.56,.64,1);
+        will-change: left, top;
+        text-shadow: 0 0 10px rgba(201,168,76,.5);
+      }
+
+      /* HOVER mejorado */
+      body.cur-hover #cursor { 
+        width: 6px; height: 6px; 
+        background: var(--gl); 
+        box-shadow: 0 0 20px rgba(226,196,122,1), 
+                    0 0 40px rgba(226,196,122,.5),
+                    0 0 60px rgba(226,196,122,.25);
+      }
+      body.cur-hover #cursor-ring { 
+        width: 64px; height: 64px; 
+        border-color: rgba(226,196,122,.5);
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      body.cur-hover #cursor-ring::before,
+      body.cur-hover #cursor-ring::after { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+      body.cur-hover #cursor-label { opacity: 1; transform: translate(22px, -50%) scale(1); }
+
+      /* CLICK con efecto de onda */
+      body.cur-click #cursor { 
+        width: 18px; height: 18px; 
+        box-shadow: 0 0 30px rgba(201,168,76,1), 0 0 60px rgba(201,168,76,.6);
+      }
+      body.cur-click #cursor-ring { 
+        width: 28px; height: 28px; 
+        border-color: var(--go); 
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(0deg) scale(1.1);
+      }
+
+      /* TEXTO/INPUT */
+      body.cur-text #cursor { width: 2px; height: 22px; border-radius: 1px; box-shadow: none; background: var(--go); }
+      body.cur-text #cursor-ring { opacity: 0 !important; }
+    }
+
+    /* ── NOISE OVERLAY con animación sutil ── */
+    body::before { 
+      content:''; position:fixed; inset:0; z-index:9990; pointer-events:none; opacity:.025;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: noiseShift 8s steps(10) infinite;
+    }
+    @keyframes noiseShift {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-2%, -2%); }
+      20% { transform: translate(2%, 2%); }
+      30% { transform: translate(-1%, 2%); }
+      40% { transform: translate(2%, -1%); }
+      50% { transform: translate(-2%, 1%); }
+      60% { transform: translate(1%, -2%); }
+      70% { transform: translate(-1%, -1%); }
+      80% { transform: translate(2%, 1%); }
+      90% { transform: translate(-2%, 2%); }
+    }
+
+    /* ── PROGRESS BAR mejorada ── */
+    #progress { 
+      position:fixed; top:0; left:0; height:2px; width:0; 
+      background: linear-gradient(90deg, var(--go), var(--gl), var(--go)); 
+      background-size: 200% 100%;
+      animation: progressGlow 2s ease infinite;
+      z-index:500; 
+      box-shadow: 0 0 10px var(--go), 0 0 20px rgba(201,168,76,.3);
+    }
+    @keyframes progressGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* ── NAV con animaciones mejoradas ── */
+    nav { 
+      position:fixed; top:0; left:0; right:0; z-index:400; 
+      display:flex; align-items:center; justify-content:space-between; 
+      padding:1.3rem 5vw; 
+      transition: all .5s cubic-bezier(.23,1,.32,1); 
+      border-bottom:1px solid transparent; 
+    }
+    nav.sc { 
+      background:rgba(13,43,30,.97); 
+      backdrop-filter:blur(20px); 
+      border-color:rgba(201,168,76,.18); 
+      padding:.8rem 5vw;
+      box-shadow: 0 10px 40px rgba(0,0,0,.3);
+    }
+    .nav-logo { 
+      font-family:var(--fd); font-size:.92rem; letter-spacing:.22em; 
+      color:var(--go); text-decoration:none; 
+      display:flex; flex-direction:column; gap:.08rem; line-height:1.2;
+      transition: transform .3s ease, filter .3s ease;
+    }
+    .nav-logo:hover { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(201,168,76,.4)); }
+    .nav-logo span { font-family:var(--fu); font-size:.55rem; font-weight:300; letter-spacing:.3em; color:var(--wd); text-transform:uppercase; }
+    .nav-links { display:flex; gap:2rem; align-items:center; }
+    .nav-links a { 
+      font-family:var(--fu); font-size:.65rem; font-weight:300; letter-spacing:.25em; 
+      text-transform:uppercase; color:var(--wd); text-decoration:none; 
+      transition: color .3s, transform .3s ease; position:relative; 
+    }
+    .nav-links a::after { 
+      content:''; position:absolute; bottom:-3px; left:50%; 
+      width:0; height:1px; background:var(--go); 
+      transition: width .4s cubic-bezier(.23,1,.32,1), left .4s cubic-bezier(.23,1,.32,1); 
+    }
+    .nav-links a:hover { color:var(--gl); transform: translateY(-2px); }
+    .nav-links a:hover::after { width:100%; left:0; }
+    .lang-btn { 
+      font-family:var(--fu); font-size:.62rem; letter-spacing:.2em; 
+      background:transparent; border:1px solid rgba(201,168,76,.38); 
+      color:var(--go); padding:.3rem .75rem; cursor:pointer; 
+      transition: all .35s cubic-bezier(.23,1,.32,1); 
+    }
+    .lang-btn:hover { background:var(--go); color:var(--gd); transform: scale(1.05); box-shadow: 0 0 15px rgba(201,168,76,.4); }
+    .nav-cta { 
+      font-family:var(--fu); font-size:.62rem; letter-spacing:.2em; 
+      background:var(--go); color:var(--gd); padding:.5rem 1.2rem; 
+      text-decoration:none; font-weight:500; text-transform:uppercase; 
+      transition: all .35s cubic-bezier(.23,1,.32,1); 
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+      transition: left .5s ease;
+    }
+    .nav-cta:hover { background:var(--gl); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,.35); }
+    .nav-cta:hover::before { left: 100%; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; background:none; border:none; }
+    .hamburger span { width:22px; height:1px; background:var(--go); display:block; transition:all .4s cubic-bezier(.23,1,.32,1); transform-origin: center; }
+    .hamburger:hover span:nth-child(1) { transform: translateY(-2px); }
+    .hamburger:hover span:nth-child(3) { transform: translateY(2px); }
+
+    /* ── MOBILE OVERLAY mejorado ── */
+    .mob-menu { 
+      display:none; position:fixed; inset:0; 
+      background:rgba(10,33,22,.98); z-index:450; 
+      flex-direction:column; align-items:center; justify-content:center; gap:2.2rem;
+      opacity: 0;
+      transform: scale(1.1);
+      transition: opacity .4s ease, transform .4s cubic-bezier(.23,1,.32,1);
+    }
+    .mob-menu.open { display:flex; opacity: 1; transform: scale(1); }
+    .mob-menu a { 
+      font-family:var(--fd); font-size:1.35rem; letter-spacing:.12em; 
+      color:var(--w); text-decoration:none; 
+      transition: color .3s, transform .3s ease, letter-spacing .3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .mob-menu.open a { 
+      opacity: 1; transform: translateY(0);
+      animation: mobMenuIn .5s ease forwards;
+    }
+    .mob-menu.open a:nth-child(2) { animation-delay: .05s; }
+    .mob-menu.open a:nth-child(3) { animation-delay: .1s; }
+    .mob-menu.open a:nth-child(4) { animation-delay: .15s; }
+    .mob-menu.open a:nth-child(5) { animation-delay: .2s; }
+    .mob-menu.open a:nth-child(6) { animation-delay: .25s; }
+    .mob-menu.open a:nth-child(7) { animation-delay: .3s; }
+    @keyframes mobMenuIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .mob-menu a:hover { color:var(--go); transform: scale(1.05); letter-spacing: .18em; }
+    .mob-close { 
+      position:absolute; top:1.4rem; right:5vw; background:none; border:none; 
+      color:var(--go); font-size:1.4rem; cursor:pointer; font-family:var(--fu);
+      transition: transform .3s ease, color .3s;
+    }
+    .mob-close:hover { transform: rotate(90deg) scale(1.2); color: var(--gl); }
+
+    /* ── HERO con animaciones espectaculares ── */
+    #hero { min-height:100vh; position:relative; display:flex; flex-direction:column; justify-content:center; padding:8rem 5vw 5rem; overflow:hidden; }
+    .h-bg { 
+      position:absolute; inset:0; 
+      background:radial-gradient(ellipse 90% 80% at 62% 42%,#1a3d2a 0%,#0d2b1e 55%,#060f09 100%); 
+      z-index:0;
+      animation: heroBgPulse 8s ease-in-out infinite;
+    }
+    @keyframes heroBgPulse {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.05); }
+    }
+    .h-grid { 
+      position:absolute; inset:0; z-index:0; 
+      background-image:linear-gradient(rgba(201,168,76,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.035) 1px,transparent 1px); 
+      background-size:78px 78px; 
+      mask-image:radial-gradient(ellipse 65% 65% at 62% 50%,black 0%,transparent 80%);
+      animation: gridFloat 20s ease-in-out infinite;
+    }
+    @keyframes gridFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(5px, -5px) scale(1.01); }
+      50% { transform: translate(0, 5px) scale(1); }
+      75% { transform: translate(-5px, 0) scale(1.01); }
+    }
+    .h-compass { 
+      position:absolute; right:-3vw; top:50%; transform:translateY(-50%); 
+      width:58vmin; height:58vmin; opacity:.065; z-index:0; 
+      animation:crot 70s linear infinite; 
+      pointer-events:none;
+      filter: drop-shadow(0 0 30px rgba(201,168,76,.1));
+    }
+    @keyframes crot { to { transform:translateY(-50%) rotate(360deg); } }
+
+    /* Logo integrado al fondo con efecto de respiración */
+    .logo-bg {
+      position: absolute;
+      right: 4vw; top: 50%;
+      transform: translateY(-50%);
+      width: clamp(280px, 42vw, 580px);
+      aspect-ratio: 1;
+      z-index: 0;
+      pointer-events: none;
+      animation: logoBreathe 6s ease-in-out infinite;
+    }
+    @keyframes logoBreathe {
+      0%, 100% { transform: translateY(-50%) scale(1); opacity: 1; }
+      50% { transform: translateY(-50%) scale(1.03); opacity: 0.95; }
+    }
+    .logo-bg img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      opacity: .09;
+      mix-blend-mode: screen;
+      filter: saturate(1.4) brightness(1.1);
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 80%);
+    }
+
+    .h-inner { position:relative; z-index:1; max-width:1380px; margin:0 auto; width:100%; display:block; }
+    .h-inner > div:first-child { max-width: 580px; }
+    .h-eye { 
+      font-family:var(--fu); font-size:.6rem; letter-spacing:.44em; color:var(--go); 
+      text-transform:uppercase; margin-bottom:1.3rem; display:flex; align-items:center; gap:.9rem; 
+      opacity:0; animation:fup .8s .25s forwards;
+    }
+    .h-eye::before { 
+      content:''; display:block; width:32px; height:1px; background:var(--go); flex-shrink:0;
+      animation: lineExpand 1s .3s ease forwards;
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+    @keyframes lineExpand { to { transform: scaleX(1); } }
+    .h-title { 
+      font-family:var(--fd); font-size:clamp(2.5rem,5vw,4.8rem); font-weight:400; 
+      line-height:1.04; letter-spacing:.04em; color:var(--w); margin-bottom:1.1rem; 
+      opacity:0; animation:heroTitleIn 1s .45s forwards;
+    }
+    @keyframes heroTitleIn {
+      0% { opacity: 0; transform: translateY(40px) skewY(2deg); filter: blur(10px); }
+      100% { opacity: 1; transform: translateY(0) skewY(0deg); filter: blur(0); }
+    }
+    .h-title em { 
+      color:var(--go); font-style:normal; display:block;
+      animation: titleEmGlow 3s ease-in-out infinite;
+    }
+    @keyframes titleEmGlow {
+      0%, 100% { text-shadow: 0 0 20px rgba(201,168,76,.2); }
+      50% { text-shadow: 0 0 30px rgba(201,168,76,.4), 0 0 60px rgba(201,168,76,.2); }
+    }
+    .h-badge { 
+      display:inline-flex; align-items:center; gap:.6rem; 
+      background:rgba(201,168,76,.1); border:1px solid rgba(201,168,76,.3); 
+      padding:.4rem 1rem; margin-bottom:1.4rem; 
+      opacity:0; animation:badgeIn .8s .55s forwards;
+      transition: all .3s ease;
+    }
+    @keyframes badgeIn {
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    .h-badge:hover { 
+      background: rgba(201,168,76,.15); 
+      border-color: rgba(201,168,76,.5);
+      transform: translateX(5px);
+    }
+    .h-badge span { font-family:var(--fu); font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:var(--go); }
+    .h-badge-dot { 
+      width:6px; height:6px; background:var(--go); border-radius:50%; 
+      animation:pulse 2s ease-in-out infinite;
+      box-shadow: 0 0 10px var(--go);
+    }
+    @keyframes pulse { 
+      0%,100%{ opacity:1; transform:scale(1); box-shadow: 0 0 10px var(--go); } 
+      50%{ opacity:.4; transform:scale(.7); box-shadow: 0 0 20px var(--go); } 
+    }
+    .h-sub { 
+      font-size:clamp(.95rem,1.6vw,1.25rem); font-weight:300; line-height:1.78; 
+      color:var(--wd); max-width:460px; margin-bottom:2.2rem; 
+      opacity:0; animation:fup .8s .65s forwards;
+    }
+    .h-acts { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:fup .8s .85s forwards; }
+    .btn-p { 
+      font-family:var(--fu); font-size:.67rem; letter-spacing:.25em; text-transform:uppercase; 
+      background:var(--go); color:var(--gd); padding:.92rem 2rem; text-decoration:none; 
+      font-weight:500; transition:all .4s cubic-bezier(.23,1,.32,1); 
+      display:inline-flex; align-items:center; gap:.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-p::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+      transition: left .6s ease;
+    }
+    .btn-p:hover { 
+      background:var(--gl); transform:translateY(-3px) scale(1.02); 
+      box-shadow:0 15px 45px rgba(201,168,76,.3); 
+    }
+    .btn-p:hover::before { left: 100%; }
+    .btn-o { 
+      font-family:var(--fu); font-size:.67rem; letter-spacing:.25em; text-transform:uppercase; 
+      background:transparent; border:1px solid rgba(201,168,76,.45); color:var(--go); 
+      padding:.92rem 2rem; text-decoration:none; font-weight:400; 
+      transition:all .4s cubic-bezier(.23,1,.32,1);
+      position: relative;
+    }
+    .btn-o::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      transition: all .4s ease;
+    }
+    .btn-o:hover { 
+      border-color:var(--go); background:rgba(201,168,76,.1); 
+      transform:translateY(-3px); 
+      box-shadow: 0 10px 30px rgba(201,168,76,.15);
+    }
+
+    .h-right { display:none; }
+    .logo-frame { position:relative; width:clamp(190px,28vw,380px); aspect-ratio:1; }
+    .logo-frame img { width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 0 55px rgba(201,168,76,.22)); }
+    .lr1 { position:absolute; inset:-10%; border:1px solid rgba(201,168,76,.13); border-radius:50%; animation:rp 3.2s ease-in-out infinite alternate; }
+    .lr2 { position:absolute; inset:-22%; border:1px solid rgba(201,168,76,.06); border-radius:50%; animation:rp 3.2s 1s ease-in-out infinite alternate; }
+    @keyframes rp { from{opacity:.25} to{opacity:.9} }
+
+    .h-stats { 
+      position:relative; z-index:1; max-width:1380px; margin:3.5rem auto 0; width:100%; 
+      border-top:1px solid rgba(201,168,76,.14); padding-top:2rem; 
+      display:flex; gap:3.5rem; flex-wrap:wrap; 
+      opacity:0; animation:statsIn 1s 1.2s forwards;
+    }
+    @keyframes statsIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .h-stats > div {
+      transition: transform .3s ease;
+    }
+    .h-stats > div:hover {
+      transform: translateY(-5px);
+    }
+    .s-num { 
+      font-family:var(--fd); font-size:1.75rem; color:var(--go); line-height:1;
+      transition: all .3s ease;
+    }
+    .h-stats > div:hover .s-num {
+      text-shadow: 0 0 20px rgba(201,168,76,.5);
+      transform: scale(1.05);
+    }
+    .s-lbl { font-family:var(--fu); font-size:.54rem; letter-spacing:.28em; color:var(--wd); text-transform:uppercase; margin-top:.28rem; }
+
+    /* ── MARQUEE mejorado ── */
+    .mq-wrap { 
+      overflow:hidden; 
+      border-top:1px solid rgba(201,168,76,.12); 
+      border-bottom:1px solid rgba(201,168,76,.12); 
+      background:rgba(201,168,76,.025); padding:.85rem 0;
+      position: relative;
+    }
+    .mq-wrap::before, .mq-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .mq-wrap::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--gd), transparent);
+    }
+    .mq-wrap::after {
+      right: 0;
+      background: linear-gradient(-90deg, var(--gd), transparent);
+    }
+    .mq-track { display:flex; white-space:nowrap; animation:mq 28s linear infinite; }
+    .mq-track:hover { animation-play-state: paused; }
+    .mq-track span { 
+      font-family:var(--fu); font-size:.56rem; letter-spacing:.34em; 
+      text-transform:uppercase; color:var(--go); opacity:.68; padding:0 2.4rem;
+      transition: opacity .3s, transform .3s;
+    }
+    .mq-track span:hover { opacity: 1; transform: scale(1.05); }
+    .mq-track .sep { color:rgba(201,168,76,.28); padding:0; opacity:1; animation: sepPulse 2s ease-in-out infinite; }
+    @keyframes sepPulse {
+      0%, 100% { opacity: .3; }
+      50% { opacity: .8; }
+    }
+    @keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ── SECTION UTILS ── */
+    .sp { padding:7rem 5vw; }
+    .inn { max-width:1380px; margin:0 auto; }
+    .s-lbl-tag { 
+      font-family:var(--fu); font-size:.56rem; letter-spacing:.44em; color:var(--go); 
+      text-transform:uppercase; margin-bottom:.9rem; display:flex; align-items:center; gap:.9rem;
+    }
+    .s-lbl-tag::before { 
+      content:''; display:block; width:24px; height:1px; background:var(--go); flex-shrink:0;
+      transition: width .4s ease;
+    }
+    .s-lbl-tag:hover::before { width: 40px; }
+    .s-title { 
+      font-family:var(--fd); font-size:clamp(1.75rem,3.2vw,2.9rem); font-weight:400; 
+      line-height:1.1; color:var(--w); letter-spacing:.03em;
+    }
+    .s-title em { color:var(--go); font-style:normal; }
+    .divider { 
+      width:50px; height:1px; background:var(--go); opacity:.45; margin:1.5rem 0;
+      transition: width .5s ease, opacity .3s;
+    }
+    .rv:hover .divider { width: 80px; opacity: .7; }
+
+    /* ── DEFENSA 360 SECTION con animaciones mejoradas ── */
+    #d360 { background:linear-gradient(180deg,#060f09 0%,var(--gd) 100%); border-bottom:1px solid rgba(201,168,76,.1); }
+    .d360-intro { max-width:700px; margin-bottom:4rem; }
+    .d360-intro p { font-size:1.08rem; font-weight:300; color:var(--wd); line-height:1.85; margin-top:1.2rem; }
+    .d360-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid rgba(201,168,76,.15); }
+    .d360-card { 
+      padding:3rem 2.4rem; position:relative; overflow:hidden; 
+      border-right:1px solid rgba(201,168,76,.1); 
+      transition: all .5s cubic-bezier(.23,1,.32,1);
+      background: transparent;
+    }
+    .d360-card:last-child { border-right:none; }
+    .d360-card::before { 
+      content:''; position:absolute; top:0; left:0; right:0; height:2px; 
+      background: linear-gradient(90deg, var(--go), var(--gl), var(--go));
+      background-size: 200% 100%;
+      transform:scaleX(0); transform-origin:left; 
+      transition:transform .5s cubic-bezier(.23,1,.32,1);
+    }
+    .d360-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(201,168,76,.08), transparent 70%);
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+    .d360-card:hover { 
+      background:rgba(201,168,76,.04);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.3);
+    }
+    .d360-card:hover::before { transform:scaleX(1); animation: cardLineGlow 2s ease infinite; }
+    .d360-card:hover::after { opacity: 1; }
+    @keyframes cardLineGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .d360-num { 
+      font-family:var(--fd); font-size:4.5rem; font-weight:300; 
+      color:rgba(201,168,76,.08); line-height:1; margin-bottom:.5rem; 
+      user-select:none; transition:all .5s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .d360-card:hover .d360-num { 
+      color:rgba(201,168,76,.2);
+      transform: translateX(10px);
+      text-shadow: 0 0 30px rgba(201,168,76,.2);
+    }
+    .d360-tag-pill { 
+      display:inline-block; font-family:var(--fu); font-size:.5rem; letter-spacing:.3em; 
+      text-transform:uppercase; color:var(--go); border:1px solid rgba(201,168,76,.35); 
+      padding:.18rem .55rem; margin-bottom:1.2rem;
+      position: relative;
+      z-index: 1;
+      transition: all .3s ease;
+    }
+    .d360-card:hover .d360-tag-pill {
+      background: rgba(201,168,76,.1);
+      border-color: var(--go);
+    }
+    .d360-name { 
+      font-family:var(--fd); font-size:1.3rem; font-weight:500; color:var(--w); 
+      letter-spacing:.05em; margin-bottom:1rem;
+      position: relative;
+      z-index: 1;
+      transition: color .3s ease;
+    }
+    .d360-card:hover .d360-name { color: var(--gl); }
+    .d360-desc { 
+      font-size:.94rem; font-weight:300; color:var(--wd); line-height:1.8;
+      position: relative;
+      z-index: 1;
+    }
+    .d360-icon { 
+      font-size:2rem; display:flex; align-items:center; justify-content:center;
+      margin-bottom:1rem;
+      position: relative;
+      z-index: 1;
+      transition: transform .4s cubic-bezier(.23,1,.32,1);
+      color: var(--go);
+    }
+    .d360-icon svg { stroke: var(--go); transition: stroke .3s ease, transform .4s ease; }
+    .d360-card:hover .d360-icon { transform: scale(1.15); }
+    .d360-card:hover .d360-icon svg { stroke: var(--gl); }
+    .d360-footer { 
+      margin-top:3.5rem; display:grid; grid-template-columns:1fr 1fr; gap:2rem; 
+      align-items:center; padding:2.5rem; 
+      background:rgba(201,168,76,.04); border:1px solid rgba(201,168,76,.1);
+      transition: all .4s ease;
+    }
+    .d360-footer:hover {
+      background: rgba(201,168,76,.06);
+      border-color: rgba(201,168,76,.2);
+    }
+    .d360-quote { 
+      font-family:var(--fb); font-size:clamp(1.2rem,2.2vw,1.7rem); font-style:italic; 
+      font-weight:300; color:var(--w); line-height:1.6; 
+      padding-left:1.6rem; border-left:2px solid var(--go);
+      transition: padding-left .3s ease;
+    }
+    .d360-footer:hover .d360-quote { padding-left: 2rem; }
+    .d360-quote strong { color:var(--go); font-style:normal; }
+    .d360-stats { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+    .d360-stat-item { transition: transform .3s ease; }
+    .d360-stat-item:hover { transform: scale(1.05); }
+    .d360-stat-num { 
+      font-family:var(--fd); font-size:2rem; color:var(--go); line-height:1;
+      transition: text-shadow .3s ease;
+    }
+    .d360-stat-item:hover .d360-stat-num { text-shadow: 0 0 15px rgba(201,168,76,.5); }
+    .d360-stat-lbl { font-family:var(--fu); font-size:.52rem; letter-spacing:.25em; text-transform:uppercase; color:var(--wd); margin-top:.25rem; }
+
+    /* ── AREAS con animaciones mejoradas ── */
+    #areas { background:linear-gradient(180deg,var(--gd) 0%,#081510 100%); }
+    .areas-grid { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid rgba(201,168,76,.12); margin-top:3rem; }
+    .ac { 
+      position:relative; padding:2.6rem 2.1rem; 
+      border-right:1px solid rgba(201,168,76,.1); 
+      border-bottom:1px solid rgba(201,168,76,.1); overflow:hidden; 
+      transition:all .5s cubic-bezier(.23,1,.32,1); background:transparent;
+    }
+    .ac:nth-child(3n) { border-right:none; }
+    .ac:nth-last-child(-n+3) { border-bottom:none; }
+    .ac::after { 
+      content:''; position:absolute; bottom:0; left:0; width:100%; height:2px; 
+      background: linear-gradient(90deg, transparent, var(--go), transparent);
+      transform:scaleX(0); transform-origin:center; transition:transform .5s cubic-bezier(.23,1,.32,1);
+    }
+    .ac::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 100%, rgba(201,168,76,.1), transparent 60%);
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+    .ac:hover { 
+      background:rgba(201,168,76,.05);
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0,0,0,.3);
+    }
+    .ac:hover::after { transform:scaleX(1); }
+    .ac:hover::before { opacity: 1; }
+    .ac-num { 
+      font-family:var(--fd); font-size:3rem; font-weight:300; color:rgba(201,168,76,.09); 
+      position:absolute; top:.8rem; right:1.1rem; line-height:1; user-select:none; 
+      transition:all .5s ease;
+    }
+    .ac:hover .ac-num { 
+      color:rgba(201,168,76,.25);
+      transform: scale(1.1);
+    }
+    .ac-icon { 
+      font-size:1.6rem; margin-bottom:1.1rem; display:flex;
+      align-items:center; justify-content:center;
+      transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+      color: var(--go);
+    }
+    .ac-icon svg { stroke: var(--go); transition: stroke .3s ease, transform .4s ease; }
+    .ac:hover .ac-icon { transform: scale(1.2); }
+    .ac:hover .ac-icon svg { stroke: var(--gl); }
+    .ac-name { 
+      font-family:var(--fd); font-size:1.1rem; font-weight:500; color:var(--w); 
+      letter-spacing:.04em; margin-bottom:.78rem;
+      transition: color .3s ease;
+    }
+    .ac:hover .ac-name { color: var(--gl); }
+    .ac-desc { font-size:.92rem; font-weight:300; color:var(--wd); line-height:1.78; }
+    .ac-pill { 
+      display:inline-block; margin-top:1.2rem; font-family:var(--fu); font-size:.5rem; 
+      letter-spacing:.26em; text-transform:uppercase; color:var(--go); opacity:.72; 
+      border:1px solid rgba(201,168,76,.28); padding:.18rem .55rem;
+      transition: all .3s ease;
+    }
+    .ac:hover .ac-pill { 
+      opacity: 1; 
+      background: rgba(201,168,76,.1);
+      border-color: var(--go);
+    }
+
+    /* ── FILOSOFÍA con animaciones mejoradas ── */
+    #filosofia { background:var(--gk); border-top:1px solid rgba(201,168,76,.1); border-bottom:1px solid rgba(201,168,76,.1); }
+    .phil-inner { display:grid; grid-template-columns:1fr 1fr; gap:7vw; align-items:center; }
+    .phil-quote { 
+      font-family:var(--fb); font-size:clamp(1.35rem,2.5vw,2.1rem); font-style:italic; 
+      font-weight:300; line-height:1.62; color:var(--w); 
+      padding-left:1.8rem; border-left:2px solid var(--go);
+      transition: all .4s ease;
+    }
+    .phil-quote:hover { 
+      padding-left: 2.5rem;
+      border-left-width: 3px;
+    }
+    .phil-quote strong { color:var(--go); font-style:normal; }
+    .phil-pillars { display:flex; flex-direction:column; gap:1.9rem; }
+    .pillar { 
+      display:flex; gap:1.1rem; align-items:flex-start;
+      transition: transform .3s ease;
+    }
+    .pillar:hover { transform: translateX(10px); }
+    .p-icon { 
+      width:40px; height:40px; flex-shrink:0; 
+      background:rgba(201,168,76,.07); border:1px solid rgba(201,168,76,.2); 
+      display:flex; align-items:center; justify-content:center;
+      transition: all .4s cubic-bezier(.23,1,.32,1);
+      color: var(--go);
+    }
+    .p-icon svg { stroke: var(--go); transition: stroke .3s ease; }
+    .pillar:hover .p-icon { 
+      background: rgba(201,168,76,.15);
+      border-color: var(--go);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(201,168,76,.2);
+    }
+    .pillar:hover .p-icon svg { stroke: var(--gl); }
+    .p-text h4 { 
+      font-family:var(--fd); font-size:.95rem; color:var(--go); margin-bottom:.28rem;
+      transition: letter-spacing .3s ease;
+    }
+    .pillar:hover .p-text h4 { letter-spacing: .08em; }
+    .p-text p { font-size:.88rem; font-weight:300; color:var(--wd); line-height:1.72; }
+
+    /* ── FIRMA con animaciones mejoradas ── */
+    #firma { background:var(--gd); }
+    .firma-lay { display:grid; grid-template-columns:1.2fr .85fr; gap:6vw; align-items:start; margin-top:3rem; }
+    .ft p { font-size:1.05rem; font-weight:300; line-height:1.9; color:var(--wd); margin-bottom:1.25rem; }
+    .badges { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.5rem; }
+    .badge { 
+      font-family:var(--fu); font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; 
+      border:1px solid rgba(201,168,76,.28); color:var(--go); padding:.4rem .85rem; 
+      background:rgba(201,168,76,.035);
+      transition: all .3s ease;
+    }
+    .badge:hover {
+      background: rgba(201,168,76,.1);
+      border-color: var(--go);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(201,168,76,.15);
+    }
+    .fc { 
+      background:linear-gradient(135deg,rgba(201,168,76,.06) 0%,rgba(13,43,30,.35) 100%); 
+      border:1px solid rgba(201,168,76,.18); padding:2.1rem; 
+      position:relative; overflow:hidden;
+      transition: all .4s ease;
+    }
+    .fc:hover {
+      border-color: rgba(201,168,76,.3);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.3);
+    }
+    .fc::after { 
+      content:'⚖'; position:absolute; right:.8rem; bottom:.3rem; 
+      font-size:4.5rem; opacity:.035; line-height:1; pointer-events:none;
+      transition: all .5s ease;
+    }
+    .fc:hover::after { opacity: .08; transform: rotate(10deg) scale(1.1); }
+    .fc-title { 
+      font-family:var(--fd); font-size:.9rem; color:var(--go); margin-bottom:1.5rem; letter-spacing:.1em;
+    }
+    .fc-list { list-style:none; display:flex; flex-direction:column; gap:.95rem; }
+    .fc-list li { 
+      display:flex; gap:.65rem; align-items:flex-start; 
+      font-size:.9rem; font-weight:300; color:var(--wd); line-height:1.55;
+      transition: transform .3s ease, color .3s ease;
+    }
+    .fc-list li:hover { transform: translateX(5px); color: var(--w); }
+    .fc-list li::before { 
+      content:'◆'; color:var(--go); font-size:.38rem; margin-top:.44rem; flex-shrink:0;
+      transition: transform .3s ease;
+    }
+    .fc-list li:hover::before { transform: rotate(45deg) scale(1.2); }
+
+    /* ── METODOLOGÍA con animaciones mejoradas ── */
+    #metodo { background:#060e08; }
+    .met-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.1rem; margin-top:3rem; }
+    .mc { 
+      padding:2rem 1.6rem; background:var(--wg); border:1px solid rgba(201,168,76,.07); 
+      transition:all .5s cubic-bezier(.23,1,.32,1); position:relative; overflow:hidden;
+    }
+    .mc::before { 
+      content:''; position:absolute; top:0; left:0; width:2px; height:0; 
+      background: linear-gradient(180deg, var(--go), var(--gl));
+      transition:height .5s cubic-bezier(.23,1,.32,1);
+    }
+    .mc::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0% 50%, rgba(201,168,76,.1), transparent 50%);
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+    .mc:hover { 
+      background:rgba(201,168,76,.06); 
+      transform:translateY(-8px);
+      border-color: rgba(201,168,76,.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+    }
+    .mc:hover::before { height:100%; }
+    .mc:hover::after { opacity: 1; }
+    .mc-icon { 
+      margin-bottom:.95rem; display:flex;
+      align-items:center; justify-content:center;
+      transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+      position: relative;
+      z-index: 1;
+      color: var(--go);
+    }
+    .mc-icon svg { stroke: var(--go); transition: stroke .3s ease, transform .4s ease; }
+    .mc:hover .mc-icon { transform: scale(1.2); }
+    .mc:hover .mc-icon svg { stroke: var(--gl); }
+    .mc-title { 
+      font-family:var(--fd); font-size:.98rem; color:var(--gl); margin-bottom:.6rem;
+      position: relative;
+      z-index: 1;
+      transition: color .3s ease;
+    }
+    .mc:hover .mc-title { color: var(--go); }
+    .mc-text { 
+      font-size:.84rem; font-weight:300; color:var(--wd); line-height:1.72;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── CONTACTO con animaciones mejoradas ── */
+    #contacto { background:var(--gk); border-top:1px solid rgba(201,168,76,.14); }
+    .ct-inner { display:grid; grid-template-columns:1fr 1fr; gap:6vw; }
+    .ci h2 { font-family:var(--fd); font-size:clamp(1.75rem,2.7vw,2.6rem); color:var(--w); margin-bottom:1.1rem; }
+    .ci h2 em { color:var(--go); font-style:normal; }
+    .ci > p { font-size:.98rem; font-weight:300; color:var(--wd); line-height:1.82; margin-bottom:1.9rem; }
+    .ct-dets { display:flex; flex-direction:column; gap:.95rem; }
+    .ct-item { 
+      display:flex; align-items:center; gap:.85rem;
+      transition: transform .3s ease;
+    }
+    .ct-item:hover { transform: translateX(8px); }
+    .ct-ico { 
+      width:35px; height:35px; flex-shrink:0; 
+      background:rgba(201,168,76,.07); border:1px solid rgba(201,168,76,.18); 
+      display:flex; align-items:center; justify-content:center;
+      transition: all .4s cubic-bezier(.23,1,.32,1);
+      color: var(--go);
+    }
+    .ct-ico svg { stroke: var(--go); transition: stroke .3s ease; }
+    .ct-item:hover .ct-ico { 
+      background: rgba(201,168,76,.15);
+      border-color: var(--go);
+      transform: scale(1.1);
+    }
+    .ct-item:hover .ct-ico svg { stroke: var(--gl); }
+    .ct-txt { font-size:.84rem; font-weight:300; color:var(--wd); }
+    .ct-txt strong { 
+      display:block; font-family:var(--fu); font-size:.53rem; letter-spacing:.2em; 
+      text-transform:uppercase; color:var(--go); margin-bottom:.1rem; font-weight:400;
+    }
+    .cf { display:flex; flex-direction:column; gap:.82rem; }
+    .frow { display:grid; grid-template-columns:1fr 1fr; gap:.82rem; }
+    .fg { display:flex; flex-direction:column; gap:.32rem; }
+    .fg label { 
+      font-family:var(--fu); font-size:.53rem; letter-spacing:.2em; 
+      text-transform:uppercase; color:var(--go); opacity:.82;
+      transition: opacity .3s ease;
+    }
+    .fg:focus-within label { opacity: 1; }
+    .fg input,.fg textarea,.fg select { 
+      background:rgba(255,255,255,.035); border:1px solid rgba(201,168,76,.18); 
+      color:var(--w); padding:.75rem .88rem; font-family:var(--fb); font-size:.96rem; 
+      font-weight:300; outline:none; transition:all .4s cubic-bezier(.23,1,.32,1); 
+      appearance:none; width:100%;
+    }
+    .fg input:focus,.fg textarea:focus,.fg select:focus { 
+      border-color:var(--go);
+      background: rgba(201,168,76,.05);
+      box-shadow: 0 0 20px rgba(201,168,76,.1);
+    }
+    .fg textarea { resize:vertical; min-height:100px; }
+    .fg select option { background:var(--gk); color:var(--w); }
+    .fsub { 
+      font-family:var(--fu); font-size:.65rem; letter-spacing:.25em; text-transform:uppercase; 
+      background:var(--go); color:var(--gd); padding:.95rem 2rem; border:none; 
+      cursor:pointer; font-weight:500; transition:all .4s cubic-bezier(.23,1,.32,1); 
+      width:100%; margin-top:.15rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .fsub::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+      transition: left .6s ease;
+    }
+    .fsub:hover { 
+      background:var(--gl);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(201,168,76,.3);
+    }
+    .fsub:hover::before { left: 100%; }
+    .fnote { font-family:var(--fu); font-size:.53rem; color:rgba(201,168,76,.45); letter-spacing:.1em; text-align:center; }
+
+    /* ── FOOTER con animaciones mejoradas ── */
+    footer { background:#040b06; border-top:1px solid rgba(201,168,76,.13); padding:3.8rem 5vw 2.4rem; }
+    .fm { max-width:1380px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4vw; padding-bottom:2.4rem; border-bottom:1px solid rgba(201,168,76,.07); }
+    .fb-name { 
+      font-family:var(--fd); font-size:1.1rem; color:var(--go); letter-spacing:.1em; margin-bottom:.2rem;
+      transition: text-shadow .3s ease;
+    }
+    .fb-name:hover { text-shadow: 0 0 15px rgba(201,168,76,.4); }
+    .fb-sub { font-family:var(--fu); font-size:.53rem; letter-spacing:.28em; color:var(--wd); text-transform:uppercase; margin-bottom:.85rem; }
+    .fb-brand p { font-size:.82rem; font-weight:300; color:rgba(248,245,238,.32); line-height:1.7; max-width:250px; }
+    .fc-col h5 { font-family:var(--fu); font-size:.53rem; letter-spacing:.3em; text-transform:uppercase; color:var(--go); margin-bottom:.95rem; opacity:.78; }
+    .fc-col ul { list-style:none; display:flex; flex-direction:column; gap:.58rem; }
+    .fc-col ul li a { 
+      font-size:.82rem; font-weight:300; color:rgba(248,245,238,.38); text-decoration:none; 
+      transition:all .3s ease;
+      position: relative;
+    }
+    .fc-col ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--go);
+      transition: width .3s ease;
+    }
+    .fc-col ul li a:hover { color:var(--gl); transform: translateX(5px); }
+    .fc-col ul li a:hover::after { width: 100%; }
+    .f-bot { max-width:1380px; margin:1.5rem auto 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.9rem; }
+    .f-copy { font-family:var(--fu); font-size:.53rem; letter-spacing:.12em; color:rgba(248,245,238,.18); }
+    .soc { display:flex; gap:.7rem; }
+    .soc a { 
+      width:32px; height:32px; border:1px solid rgba(201,168,76,.2); 
+      display:flex; align-items:center; justify-content:center; 
+      text-decoration:none; font-size:.76rem; font-family:var(--fu); 
+      color:var(--wd); transition:all .4s cubic-bezier(.23,1,.32,1);
+    }
+    .soc a:hover { 
+      border-color:var(--go); color:var(--go); background:rgba(201,168,76,.1);
+      transform: translateY(-4px) rotate(-5deg);
+      box-shadow: 0 8px 20px rgba(201,168,76,.2);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fup { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fin  { from{opacity:0} to{opacity:1} }
+    
+    /* Reveal mejorado con stagger */
+    .rv { transition:opacity .8s cubic-bezier(.23,1,.32,1), transform .8s cubic-bezier(.23,1,.32,1); }
+    .rv.hide { opacity:0; transform:translateY(40px); }
+    .rv.show { opacity:1; transform:translateY(0); }
+    
+    /* Stagger effect para cards */
+    .d360-grid .rv:nth-child(1) { transition-delay: 0s; }
+    .d360-grid .rv:nth-child(2) { transition-delay: 0.1s; }
+    .d360-grid .rv:nth-child(3) { transition-delay: 0.2s; }
+    
+    .areas-grid .rv:nth-child(1) { transition-delay: 0s; }
+    .areas-grid .rv:nth-child(2) { transition-delay: 0.1s; }
+    .areas-grid .rv:nth-child(3) { transition-delay: 0.2s; }
+    
+    .met-grid .rv:nth-child(1) { transition-delay: 0s; }
+    .met-grid .rv:nth-child(2) { transition-delay: 0.1s; }
+    .met-grid .rv:nth-child(3) { transition-delay: 0.2s; }
+    .met-grid .rv:nth-child(4) { transition-delay: 0.3s; }
+
+    /* ── PARTÍCULAS FLOTANTES ── */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--go);
+      border-radius: 50%;
+      opacity: 0;
+      animation: particleFloat 15s ease-in-out infinite;
+    }
+    @keyframes particleFloat {
+      0%, 100% { opacity: 0; transform: translateY(100vh) scale(0); }
+      10% { opacity: .3; }
+      50% { opacity: .15; }
+      90% { opacity: .3; }
+      95% { opacity: 0; transform: translateY(-10vh) scale(1); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:1100px) {
+      .d360-grid { grid-template-columns:1fr; }
+      .d360-card { border-right:none; border-bottom:1px solid rgba(201,168,76,.1); }
+      .d360-card:last-child { border-bottom:none; }
+      .d360-footer { grid-template-columns:1fr; }
+      .areas-grid { grid-template-columns:1fr 1fr; }
+      .ac:nth-child(3n) { border-right:1px solid rgba(201,168,76,.1); }
+      .ac:nth-child(2n) { border-right:none; }
+      .met-grid { grid-template-columns:1fr 1fr; }
+      .fm { grid-template-columns:1fr 1fr; gap:2.5rem; }
+    }
+    @media (max-width:800px) {
+      .sp { padding:5rem 5vw; }
+      .h-inner { grid-template-columns:1fr; }
+      .h-right { display:none; }
+      .h-stats { gap:1.8rem; }
+      .d360-grid { grid-template-columns:1fr; }
+      .d360-footer { grid-template-columns:1fr; }
+      .d360-stats { grid-template-columns:1fr 1fr; }
+      .areas-grid { grid-template-columns:1fr; }
+      .ac { border-right:none !important; }
+      .ac:nth-last-child(-n+3) { border-bottom:1px solid rgba(201,168,76,.1); }
+      .ac:last-child { border-bottom:none; }
+      .phil-inner { grid-template-columns:1fr; gap:3rem; }
+      .firma-lay { grid-template-columns:1fr; }
+      .ct-inner { grid-template-columns:1fr; }
+      .met-grid { grid-template-columns:1fr 1fr; }
+      .frow { grid-template-columns:1fr; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      #hero { padding:7rem 5vw 4rem; }
+    }
+    @media (max-width:520px) {
+      .sp { padding:4rem 4vw; }
+      .met-grid { grid-template-columns:1fr; }
+      .fm { grid-template-columns:1fr; }
+      .d360-stats { grid-template-columns:1fr; }
+      .h-stats { gap:1.4rem; }
+      .s-num { font-size:1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PARTÍCULAS FLOTANTES -->
+<div class="particles" id="particles"></div>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="cursor-label"></div>
+<div id="progress"></div>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMenu()">✕</button>
+  <a href="#d360"     onclick="closeMenu()">Práctica Jurídica</a>
+  <a href="#areas"    onclick="closeMenu()">Otras Materias</a>
+  <a href="#filosofia" onclick="closeMenu()">Principios</a>
+  <a href="#firma"    onclick="closeMenu()">La Firma</a>
+  <a href="#contacto" onclick="closeMenu()">Contacto</a>
+  <a href="#contacto" onclick="closeMenu()" class="nav-cta" style="margin-top:.5rem">Solicitar Consulta</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">CASA TORRES<span>S.C. · Boutique Law Firm</span></a>
+  <div class="nav-links">
+    <a href="#d360">Práctica Jurídica</a>
+    <a href="#areas">Otras Materias</a>
+    <a href="#filosofia">Principios</a>
+    <a href="#firma">La Firma</a>
+    <a href="#contacto">Contacto</a>
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+    <a href="#contacto" class="nav-cta">Consultar</a>
+  </div>
+  <button class="hamburger" onclick="openMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="h-bg"></div>
+  <div class="h-grid"></div>
+  <!-- Logo integrado al fondo -->
+  <div class="logo-bg">
+    <img src="logo.png" alt=""/>
+  </div>
+
+  <div class="h-compass">
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="95" stroke="white" stroke-width=".5"/>
+      <circle cx="100" cy="100" r="78" stroke="white" stroke-width=".3"/>
+      <circle cx="100" cy="100" r="60" stroke="white" stroke-width=".5"/>
+      <circle cx="100" cy="100" r="42" stroke="white" stroke-width=".2"/>
+      <line x1="100" y1="5"   x2="100" y2="195" stroke="white" stroke-width=".3"/>
+      <line x1="5"   y1="100" x2="195" y2="100" stroke="white" stroke-width=".3"/>
+      <line x1="30"  y1="30"  x2="170" y2="170" stroke="white" stroke-width=".2"/>
+      <line x1="170" y1="30"  x2="30"  y2="170" stroke="white" stroke-width=".2"/>
+      <text x="100" y="17"  text-anchor="middle" fill="white" font-size="9" font-family="serif">N</text>
+      <text x="100" y="193" text-anchor="middle" fill="white" font-size="9" font-family="serif">S</text>
+      <text x="13"  y="104" text-anchor="middle" fill="white" font-size="9" font-family="serif">W</text>
+      <text x="188" y="104" text-anchor="middle" fill="white" font-size="9" font-family="serif">E</text>
+    </svg>
+  </div>
+
+  <div class="h-inner">
+    <div>
+      <p class="h-eye">Litigio Especializado · República Mexicana</p>
+      <h1 class="h-title">Casa Torres<em>S.C.</em></h1>
+      <div class="h-badge">
+        <div class="h-badge-dot"></div>
+        <span>Litigio Integral en Derecho Público</span>
+      </div>
+      <p class="h-sub">Firma jurídica especializada en litigio de derecho público. Brindamos representación legal con rigor técnico, visión estratégica y el compromiso que cada asunto demanda.</p>
+      <div class="h-acts">
+        <a href="#contacto" class="btn-p">Solicitar Consulta →</a>
+        <a href="#d360"     class="btn-o">Áreas de Práctica</a>
+      </div>
+    </div>
+    <div class="h-right">
+      <div class="logo-frame">
+        <div class="lr2"></div><div class="lr1"></div>
+        <img src="logo.png" alt="Casa Torres S.C."/>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-stats">
+    <div><div class="s-num" data-count="100">100</div><div class="s-lbl">% Dedicación</div></div>
+    <div><div class="s-num">3</div><div class="s-lbl">Materias Principales</div></div>
+    <div><div class="s-num">MX</div><div class="s-lbl">Cobertura Nacional</div></div>
+    <div><div class="s-num">INT</div><div class="s-lbl">Proyección Internacional</div></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-wrap">
+  <div class="mq-track" id="mqTrack">
+    <span>Litigio Constitucional</span><span class="sep">◆</span>
+    <span>Derecho Administrativo</span><span class="sep">◆</span>
+    <span>Procedimiento Penal Acusatorio</span><span class="sep">◆</span>
+    <span>Juicio de Amparo</span><span class="sep">◆</span>
+    <span>Control de Convencionalidad</span><span class="sep">◆</span>
+    <span>Contencioso Administrativo</span><span class="sep">◆</span>
+    <span>Cobertura Nacional</span><span class="sep">◆</span>
+    <span>Proyección Internacional</span><span class="sep">◆</span>
+    <span>Litigio Constitucional</span><span class="sep">◆</span>
+    <span>Derecho Administrativo</span><span class="sep">◆</span>
+    <span>Procedimiento Penal Acusatorio</span><span class="sep">◆</span>
+    <span>Juicio de Amparo</span><span class="sep">◆</span>
+    <span>Control de Convencionalidad</span><span class="sep">◆</span>
+    <span>Contencioso Administrativo</span><span class="sep">◆</span>
+    <span>Cobertura Nacional</span><span class="sep">◆</span>
+    <span>Proyección Internacional</span><span class="sep">◆</span>
+  </div>
+</div>
+
+<!-- DEFENSA 360° -->
+<section id="d360" class="sp">
+  <div class="inn">
+    <div class="d360-intro rv">
+      <div class="s-lbl-tag">Áreas de Práctica</div>
+      <h2 class="s-title">Litigio <em>Integral</em> en Derecho Público</h2>
+      <div class="divider"></div>
+      <p>La representación jurídica eficaz en derecho público exige dominio simultáneo de sus tres vertientes fundamentales. Nuestra práctica abarca el ámbito constitucional, administrativo y penal con idéntico rigor técnico y nivel de especialización, garantizando una defensa sin puntos ciegos independientemente de la complejidad del asunto.</p>
+    </div>
+    <div class="d360-grid">
+      <!-- EJE 1 -->
+      <div class="d360-card rv">
+        <div class="d360-num">I</div>
+        <span class="d360-tag-pill">Materia Constitucional</span>
+        <span class="d360-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 9l9-6 9 6M5 9v6a2 2 0 002 2h10a2 2 0 002-2V9"/><circle cx="12" cy="13" r="2"/></svg></span>
+        <div class="d360-name">Litigio Constitucional</div>
+        <p class="d360-desc">Ejercemos la defensa de personas físicas y morales frente a actos de autoridad que transgreden derechos fundamentales. Promovemos juicios de amparo directo e indirecto, desarrollando líneas argumentativas sustentadas en el bloque de constitucionalidad y los tratados internacionales en materia de derechos humanos de los que el Estado mexicano es parte.</p>
+      </div>
+      <!-- EJE 2 -->
+      <div class="d360-card rv">
+        <div class="d360-num">II</div>
+        <span class="d360-tag-pill">Materia Administrativa</span>
+        <span class="d360-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg></span>
+        <div class="d360-name">Contencioso Administrativo</div>
+        <p class="d360-desc">Ejercemos la representación de particulares afectados por actos, resoluciones y omisiones de la administración pública. Impugnamos sanciones administrativas, determinaciones fiscales, resoluciones de procedimientos administrativos y actos relativos a contratación pública, instando la nulidad de actos ilegales y la reparación integral del daño causado.</p>
+      </div>
+      <!-- EJE 3 -->
+      <div class="d360-card rv">
+        <div class="d360-num">III</div>
+        <span class="d360-tag-pill">Materia Penal</span>
+        <span class="d360-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="16" r="1.5"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
+        <div class="d360-name">Procedimiento Penal</div>
+        <p class="d360-desc">Proporcionamos asistencia jurídica integral desde la etapa de investigación hasta la conclusión del proceso penal. Desarrollamos una defensa técnica rigurosa en cada fase procesal — investigación inicial, etapa intermedia y juicio oral — con el objetivo de salvaguardar la libertad personal y las garantías del debido proceso de nuestros representados.</p>
+      </div>
+    </div>
+    <!-- FOOTER CITA + STATS -->
+    <div class="d360-footer rv">
+      <div class="d360-quote">
+        "Un litigio bien fundamentado no solo resuelve el conflicto inmediato — <strong>sienta las bases de los criterios jurisprudenciales</strong> que guiarán la resolución de casos futuros."
+      </div>
+      <div class="d360-stats">
+        <div class="d360-stat-item">
+          <div class="d360-stat-num">3</div>
+          <div class="d360-stat-lbl">Materias de especialización</div>
+        </div>
+        <div class="d360-stat-item">
+          <div class="d360-stat-num">360°</div>
+          <div class="d360-stat-lbl">Cobertura en derecho público</div>
+        </div>
+        <div class="d360-stat-item">
+          <div class="d360-stat-num">MX</div>
+          <div class="d360-stat-lbl">Jurisdicción nacional</div>
+        </div>
+        <div class="d360-stat-item">
+          <div class="d360-stat-num">INT</div>
+          <div class="d360-stat-lbl">Foros internacionales</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÁREAS ADICIONALES -->
+<section id="areas" class="sp">
+  <div class="inn">
+    <div class="rv">
+      <div class="s-lbl-tag">Práctica Complementaria</div>
+      <h2 class="s-title">Otras Materias de <em>Especialización</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="areas-grid">
+      <div class="ac rv">
+        <div class="ac-num">04</div>
+        <span class="ac-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></span>
+        <div class="ac-name">Litigio Estratégico</div>
+        <p class="ac-desc">Diseñamos estrategias procesales integrales orientadas a trascender el caso individual. Identificamos oportunidades para establecer precedentes jurisdiccionales, articulamos argumentaciones innovadoras y coordinamos actuaciones en múltiples foros cuando las circunstancias lo requieren, maximizando el impacto jurídico de cada resolución.</p>
+        <span class="ac-pill">Práctica Especializada</span>
+      </div>
+      <div class="ac rv">
+        <div class="ac-num">05</div>
+        <span class="ac-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
+        <div class="ac-name">Litigio Civil y Mercantil</div>
+        <p class="ac-desc">Atendemos controversias de naturaleza civil y mercantil entre particulares: incumplimiento contractual, responsabilidad civil, acciones de nulidad y recuperación de créditos. Asimismo, ejercemos representación en procedimientos arbitrales nacionales e internacionales cuando esta vía resulta procesalmente conveniente.</p>
+        <span class="ac-pill">Práctica Complementaria</span>
+      </div>
+      <div class="ac rv">
+        <div class="ac-num">06</div>
+        <span class="ac-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+        <div class="ac-name">Cumplimiento Regulatorio</div>
+        <p class="ac-desc">Asesoramos a personas morales e instituciones en la identificación, evaluación y mitigación de riesgos jurídicos de manera preventiva. Diseñamos e implementamos programas de cumplimiento normativo, conducimos auditorías jurídicas internas y proporcionamos acompañamiento ante autoridades reguladoras y de fiscalización.</p>
+        <span class="ac-pill">Práctica Complementaria</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILOSOFÍA -->
+<section id="filosofia" class="sp">
+  <div class="inn">
+    <div class="phil-inner">
+      <div class="rv">
+        <div class="s-lbl-tag">Principios Rectores</div>
+        <div class="phil-quote">
+          "El abogado que defiende con solidez técnica una posición jurídica, aun frente a la adversidad procesal, no solo protege los intereses de su cliente — <strong>contribuye a forjar los criterios</strong> que orientarán la justicia del mañana."
+        </div>
+      </div>
+      <div class="phil-pillars rv">
+        <div class="pillar">
+          <div class="p-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20l10-10M12 10l10-10M2 20l4-4M16 16l4 4M22 2l-4 4"/><circle cx="12" cy="10" r="2"/></svg></div>
+          <div class="p-text">
+            <h4>Rigor Metodológico</h4>
+            <p>Cada asunto es objeto de análisis exhaustivo previo a cualquier actuación procesal. La estrategia jurídica se diseña a la medida de las particularidades del caso, fundamentada en el estudio pormenorizado de sus elementos fácticos y normativos.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="p-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+          <div class="p-text">
+            <h4>Perspectiva Internacional</h4>
+            <p>Dominamos los estándares internacionales en materia de derechos humanos y los empleamos como herramienta argumentativa en el litigio interno. Cuando las circunstancias lo ameritan, extendemos la representación a instancias jurisdiccionales internacionales.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="p-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="p-text">
+            <h4>Impacto Jurídico</h4>
+            <p>Orientamos nuestra práctica hacia la obtención de resoluciones que trasciendan el caso concreto. Procuramos que cada criterio favorable siente precedentes aplicables a situaciones jurídicas análogas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EL DESPACHO -->
+<section id="firma" class="sp">
+  <div class="inn">
+    <div class="rv">
+      <div class="s-lbl-tag">La Firma</div>
+      <h2 class="s-title">Nuestra <em>Identidad</em> Institucional</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="firma-lay">
+      <div class="ft rv">
+        <p>Casa Torres S.C. nació de una convicción fundamental: los asuntos jurídicos de alta complejidad exigen la dedicación plena de profesionales especializados. Somos una firma de práctica concentrada, cuya dimensión responde a una decisión institucional deliberada, no a una limitación. Esta estructura nos permite brindar a cada asunto el análisis exhaustivo y la atención personalizada que su naturaleza técnica demanda.</p>
+        <p>Nuestra práctica abarca las tres materias esenciales del derecho público —constitucional, administrativa y penal— con el mismo rigor técnico y compromiso profesional. Cuando la adecuada representación de nuestros clientes lo requiere, no dudamos en llevar los asuntos ante instancias jurisdiccionales internacionales. Para nosotros, la defensa efectiva no conoce fronteras.</p>
+
+      </div>
+      <div class="rv">
+        <div class="fc">
+          <div class="fc-title">Compromisos Institucionales</div>
+          <ul class="fc-list">
+            <li>Diseño de estrategia procesal individualizada para cada asunto</li>
+            <li>Representación ante tribunales constitucionales, administrativos y penales</li>
+            <li>Capacidad de actuación ante instancias jurisdiccionales internacionales</li>
+            <li>Comunicación directa y permanente con el cliente</li>
+            <li>Estricta observancia del secreto profesional</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGÍA -->
+<section id="metodo" class="sp">
+  <div class="inn">
+    <div class="rv">
+      <div class="s-lbl-tag">Metodología de Trabajo</div>
+      <h2 class="s-title">Principios de <em>Práctica</em> Profesional</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="met-grid">
+      <div class="mc rv">
+        <span class="mc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+        <div class="mc-title">Celeridad Procesal</div>
+        <p class="mc-text">En el ejercicio del litigio, los plazos procesales resultan tan determinantes como la solidez argumentativa. Actuamos con la prontitud que las circunstancias exigen, conscientes de que la preclusión de una oportunidad procesal puede resultar irreversible.</p>
+      </div>
+      <div class="mc rv">
+        <span class="mc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></span>
+        <div class="mc-title">Investigación Exhaustiva</div>
+        <p class="mc-text">Toda actuación procesal es precedida de investigación meticulosa. Analizamos precedentes jurisdiccionales, estudiamos el contexto fáctico y normativo, y anticipamos las líneas argumentativas de la contraparte. Un asunto debidamente fundamentado posee ventaja procesal desde su origen.</p>
+      </div>
+      <div class="mc rv">
+        <span class="mc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9H4.5a2.5 2.5 0 010-5H6M18 9h1.5a2.5 2.5 0 000-5H18M4 22h16M10 22V10M14 22V10"/><path d="M8 6a2 2 0 012-2h4a2 2 0 012 2v4H8V6z"/><path d="M12 10v2"/></svg></span>
+        <div class="mc-title">Estrategia Orientada a Resultados</div>
+        <p class="mc-text">Cada determinación dentro del proceso — desde la audiencia inicial hasta el último recurso — obedece a una estrategia procesal definida con claridad. Nuestra práctica se sustenta en planificación rigurosa, no en improvisación.</p>
+      </div>
+      <div class="mc rv">
+        <span class="mc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
+        <div class="mc-title">Reserva Profesional</div>
+        <p class="mc-text">La información confiada por el cliente permanece resguardada bajo estricto secreto profesional. Conducimos los asuntos sensibles con la reserva y discreción que ameritan — particularmente aquellos de relevancia pública o corporativa significativa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="sp">
+  <div class="inn">
+    <div class="ct-inner">
+      <div class="ci rv">
+        <h2>Solicite una <em>Consulta</em></h2>
+        <div class="divider"></div>
+        <p>El primer paso consiste en conocer su situación jurídica. En una consulta de carácter confidencial analizamos las circunstancias del asunto, evaluamos las vías procesales procedentes y proporcionamos una opinión jurídica fundamentada sobre las alternativas de actuación más adecuadas para su caso.</p>
+        <div class="ct-dets">
+          <div class="ct-item">
+            <div class="ct-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div>
+            <div class="ct-txt"><strong>Correo Electrónico</strong>contacto@casatorres.mx</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="ct-txt"><strong>Teléfono</strong>+52 (55) 0000-0000</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="ct-txt"><strong>Domicilio</strong>Ciudad de México, México</div>
+          </div>
+
+        </div>
+      </div>
+      <div class="cf rv">
+        <div class="frow">
+          <div class="fg"><label>Nombre Completo</label><input type="text" placeholder="Nombre y apellidos"/></div>
+          <div class="fg"><label>Razón Social (opcional)</label><input type="text" placeholder="Persona moral"/></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Correo Electrónico</label><input type="email" placeholder="correo@ejemplo.com"/></div>
+          <div class="fg"><label>Teléfono de Contacto</label><input type="tel" placeholder="+52 (55) 0000-0000"/></div>
+        </div>
+        <div class="fg">
+          <label>Materia del Asunto</label>
+          <select>
+            <option value="">Seleccione la materia aplicable</option>
+            <option>Litigio Constitucional / Juicio de Amparo</option>
+            <option>Contencioso Administrativo</option>
+            <option>Procedimiento Penal Acusatorio</option>
+            <option>Litigio Estratégico</option>
+            <option>Litigio Civil y Mercantil</option>
+            <option>Cumplimiento Regulatorio</option>
+            <option>Otra materia</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Descripción del Asunto</label>
+          <textarea placeholder="Describa brevemente el acto reclamado, la autoridad emisora y la afectación a sus derechos o intereses jurídicos..."></textarea>
+        </div>
+        <button class="fsub" onclick="handleSubmit(event)">Enviar Solicitud →</button>
+        <p class="fnote">La información proporcionada se encuentra protegida por el secreto profesional</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fm">
+    <div class="fb-brand">
+      <div class="fb-name">CASA TORRES S.C.</div>
+      <div class="fb-sub">Firma Jurídica · República Mexicana</div>
+      <p>Litigio especializado en derecho público. Práctica concentrada en materia constitucional, administrativa y penal.</p>
+    </div>
+    <div class="fc-col">
+      <h5>Práctica Jurídica</h5>
+      <ul>
+        <li><a href="#d360">Litigio Constitucional</a></li>
+        <li><a href="#d360">Contencioso Administrativo</a></li>
+        <li><a href="#d360">Procedimiento Penal</a></li>
+        <li><a href="#areas">Otras Materias</a></li>
+      </ul>
+    </div>
+    <div class="fc-col">
+      <h5>La Firma</h5>
+      <ul>
+        <li><a href="#filosofia">Principios Rectores</a></li>
+        <li><a href="#firma">Identidad Institucional</a></li>
+        <li><a href="#metodo">Metodología</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="fc-col">
+      <h5>Información Legal</h5>
+      <ul>
+        <li><a href="#">Aviso de Privacidad</a></li>
+        <li><a href="#">Términos de Uso</a></li>
+        <li><a href="#">Código de Ética</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bot">
+    <div class="f-copy">© 2025 Casa Torres S.C. · Todos los derechos reservados</div>
+    <div class="soc">
+      <a href="#" title="LinkedIn">in</a>
+      <a href="#" title="X">𝕏</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── PARTÍCULAS FLOTANTES ── */
+(function() {
+  const container = document.getElementById('particles');
+  if (!container) return;
+  
+  for (let i = 0; i < 20; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 15 + 's';
+    particle.style.animationDuration = (12 + Math.random() * 8) + 's';
+    particle.style.width = (2 + Math.random() * 4) + 'px';
+    particle.style.height = particle.style.width;
+    container.appendChild(particle);
+  }
+})();
+
+/* ── CURSOR PERSONALIZADO MEJORADO ── */
+(function () {
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  const dot   = document.getElementById('cursor');
+  const ring  = document.getElementById('cursor-ring');
+  const lbl   = document.getElementById('cursor-label');
+  if (!dot || !ring) return;
+
+  let mx = 0, my = 0;
+  let rx = 0, ry = 0;
+  let ready = false;
+  let velocityX = 0, velocityY = 0;
+  let lastMx = 0, lastMy = 0;
+
+  document.addEventListener('mousemove', e => {
+    velocityX = e.clientX - lastMx;
+    velocityY = e.clientY - lastMy;
+    lastMx = e.clientX;
+    lastMy = e.clientY;
+    mx = e.clientX;
+    my = e.clientY;
+    if (!ready) {
+      rx = mx; ry = my;
+      dot.style.opacity  = '1';
+      ring.style.opacity = '1';
+      ready = true;
+    }
+  }, { passive: true });
+
+  (function loop() {
+    if (ready) {
+      // Interpolación más suave
+      rx += (mx - rx) * 0.09;
+      ry += (my - ry) * 0.09;
+      
+      // Efecto de elasticidad basado en velocidad
+      const stretch = Math.min(Math.abs(velocityX) + Math.abs(velocityY), 30) * 0.02;
+      const scaleX = 1 + stretch * 0.3;
+      const scaleY = 1 - stretch * 0.1;
+      
+      dot.style.left  = mx + 'px';
+      dot.style.top   = my + 'px';
+      dot.style.transform = `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
+      
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      
+      if (lbl) { lbl.style.left = mx + 'px'; lbl.style.top = my + 'px'; }
+      
+      velocityX *= 0.9;
+      velocityY *= 0.9;
+    }
+    requestAnimationFrame(loop);
+  })();
+
+  let hoverCount = 0;
+  function addHover(txt) {
+    hoverCount++;
+    document.body.classList.add('cur-hover');
+    if (lbl && txt) lbl.textContent = txt;
+  }
+  function removeHover() {
+    hoverCount = Math.max(0, hoverCount - 1);
+    if (hoverCount === 0) {
+      document.body.classList.remove('cur-hover');
+      if (lbl) lbl.textContent = '';
+    }
+  }
+
+  const maps = [
+    { sel: 'a:not([href="#"])',               txt: 'Ver'      },
+    { sel: '.btn-p, .btn-o, .nav-cta',        txt: 'Abrir'    },
+    { sel: 'button.lang-btn',                 txt: 'Cambiar'  },
+    { sel: '.d360-card, .ac',                 txt: 'Explorar' },
+    { sel: '.mc',                             txt: 'Leer'     },
+    { sel: '.fsub',                           txt: 'Enviar'   },
+  ];
+
+  maps.forEach(({ sel, txt }) => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.addEventListener('mouseenter', () => addHover(txt));
+      el.addEventListener('mouseleave', removeHover);
+    });
+  });
+
+  document.querySelectorAll('input, textarea, select').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cur-text'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cur-text'));
+  });
+
+  document.addEventListener('mousedown', () => document.body.classList.add('cur-click'));
+  document.addEventListener('mouseup',   () => document.body.classList.remove('cur-click'));
+
+  document.addEventListener('mouseleave', () => { dot.style.opacity='0'; ring.style.opacity='0'; if(lbl) lbl.style.opacity='0'; ready=false; });
+  document.addEventListener('mouseenter', () => { if(lbl) lbl.style.opacity=''; });
+})();
+
+/* ── SCROLL PROGRESS CON SUAVIZADO ── */
+let currentProgress = 0;
+window.addEventListener('scroll', () => {
+  const targetProgress = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  
+  // Suavizado del progress bar
+  const animate = () => {
+    currentProgress += (targetProgress - currentProgress) * 0.1;
+    document.getElementById('progress').style.width = currentProgress + '%';
+    if (Math.abs(targetProgress - currentProgress) > 0.1) {
+      requestAnimationFrame(animate);
+    }
+  };
+  requestAnimationFrame(animate);
+  
+  document.getElementById('nav').classList.toggle('sc', window.scrollY > 55);
+}, { passive: true });
+
+/* ── REVEAL MEJORADO CON STAGGER ── */
+function initReveal() {
+  const items = document.querySelectorAll('.rv');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, index) => {
+      if (e.isIntersecting) {
+        // Delay basado en el índice para efecto stagger
+        setTimeout(() => {
+          e.target.classList.remove('hide');
+          e.target.classList.add('show');
+        }, index * 50);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+  items.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('show');
+    } else {
+      el.classList.add('hide');
+      obs.observe(el);
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded', initReveal);
+
+/* ── COUNTER CON EASING MEJORADO ── */
+function animCount(el, target) {
+  let t0 = null;
+  const duration = 2200;
+  const tick = ts => {
+    if (!t0) t0 = ts;
+    const p = Math.min((ts - t0) / duration, 1);
+    // Easing: easeOutExpo
+    const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+    el.textContent = Math.floor(eased * target);
+    if (p < 1) requestAnimationFrame(tick); else el.textContent = target;
+  };
+  requestAnimationFrame(tick);
+}
+
+// Observer para iniciar contador cuando sea visible
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      if (el.dataset.count && !el.dataset.counted) {
+        el.dataset.counted = 'true';
+        animCount(el, +el.dataset.count);
+      }
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+});
+
+/* ── MOBILE MENU CON ANIMACIÓN ── */
+function openMenu() { 
+  const menu = document.getElementById('mobMenu');
+  menu.classList.add('open'); 
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() { 
+  const menu = document.getElementById('mobMenu');
+  menu.classList.remove('open'); 
+  document.body.style.overflow = '';
+}
+
+/* ── LANG TOGGLE ── */
+let lang = 'es';
+const TXT = {
+  mq: {
+    es: ['Litigio Constitucional','Derecho Administrativo','Procedimiento Penal Acusatorio','Juicio de Amparo','Control de Convencionalidad','Contencioso Administrativo','Cobertura Nacional','Proyección Internacional'],
+    en: ['Constitutional Litigation','Administrative Law','Criminal Procedure','Amparo Proceedings','Conventionality Control','Administrative Disputes','National Coverage','International Reach']
+  }
+};
+function toggleLang() {
+  lang = lang === 'es' ? 'en' : 'es';
+  document.querySelector('.lang-btn').textContent = lang === 'es' ? 'EN' : 'ES';
+  const arr = [...TXT.mq[lang], ...TXT.mq[lang]];
+  document.getElementById('mqTrack').innerHTML = arr.map(t => `<span>${t}</span><span class="sep">◆</span>`).join('');
+}
+
+/* ── FORM CON ANIMACIÓN ── */
+function handleSubmit(e) {
+  const btn = e.currentTarget; 
+  btn.disabled = true;
+  btn.style.transform = 'scale(0.98)';
+  btn.textContent = 'Procesando solicitud...';
+  
+  setTimeout(() => {
+    btn.textContent = '✓ Solicitud recibida — Un profesional de la firma le contactará a la brevedad';
+    btn.style.background = 'var(--ga)';
+    btn.style.color = 'var(--w)';
+    btn.style.transform = 'scale(1)';
+  }, 1500);
+}
+
+/* ── SMOOTH SCROLL MEJORADO ── */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      const offsetTop = target.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+/* ── PARALLAX SUTIL EN HERO ── */
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+  
+  const compass = hero.querySelector('.h-compass');
+  const logoBg = hero.querySelector('.logo-bg');
+  const grid = hero.querySelector('.h-grid');
+  
+  if (compass && scrolled < window.innerHeight) {
+    compass.style.transform = `translateY(calc(-50% + ${scrolled * 0.15}px))`;
+  }
+  if (logoBg && scrolled < window.innerHeight) {
+    logoBg.style.transform = `translateY(calc(-50% + ${scrolled * 0.1}px))`;
+  }
+  if (grid && scrolled < window.innerHeight) {
+    grid.style.transform = `translate(${scrolled * 0.02}px, ${scrolled * 0.02}px)`;
+  }
+}, { passive: true });
+
+/* ── MAGNETIC EFFECT EN BOTONES ── */
+document.querySelectorAll('.btn-p, .btn-o, .nav-cta').forEach(btn => {
+  btn.addEventListener('mousemove', function(e) {
+    const rect = this.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+  });
+  
+  btn.addEventListener('mouseleave', function() {
+    this.style.transform = '';
+  });
+});
+</script>
+</body>
+</html>
