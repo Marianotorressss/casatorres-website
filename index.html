@@ -930,6 +930,7 @@
       font-size:.82rem; font-weight:300; color:rgba(248,245,238,.38); text-decoration:none; 
       transition:all .3s ease;
       position: relative;
+      cursor: pointer;
     }
     .fc-col ul li a::after {
       content: '';
@@ -954,6 +955,98 @@
       border-color:var(--go); color:var(--go); background:rgba(201,168,76,.1);
       transform: translateY(-4px) rotate(-5deg);
       box-shadow: 0 8px 20px rgba(201,168,76,.2);
+    }
+
+    /* ── QUIÉNES SOMOS ── */
+    #equipo { background: linear-gradient(180deg, #081510 0%, var(--gd) 100%); }
+    .equipo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center; margin-top: 3rem; }
+    .equipo-content p { font-size: 1.05rem; font-weight: 300; line-height: 1.9; color: var(--wd); margin-bottom: 1.25rem; }
+    .equipo-values { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+    .eq-value { padding: 1.5rem; background: rgba(201,168,76,.03); border: 1px solid rgba(201,168,76,.1); transition: all .4s ease; }
+    .eq-value:hover { background: rgba(201,168,76,.06); border-color: rgba(201,168,76,.25); transform: translateY(-3px); }
+    .eq-value h4 { font-family: var(--fd); font-size: .95rem; color: var(--go); margin-bottom: .5rem; }
+    .eq-value p { font-size: .85rem; color: var(--wd); line-height: 1.7; }
+    .equipo-visual { position: relative; }
+    .equipo-placeholder { 
+      aspect-ratio: 4/3; 
+      background: linear-gradient(135deg, rgba(201,168,76,.08), rgba(13,43,30,.5));
+      border: 1px solid rgba(201,168,76,.15);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .equipo-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .equipo-placeholder-text { 
+      font-family: var(--fu); font-size: .7rem; letter-spacing: .3em; 
+      text-transform: uppercase; color: var(--go); opacity: .5;
+      position: relative; z-index: 1;
+    }
+    .equipo-badge { 
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--gd); border: 1px solid rgba(201,168,76,.2);
+      padding: 1.5rem 2rem;
+    }
+    .equipo-badge-num { font-family: var(--fd); font-size: 2.5rem; color: var(--go); line-height: 1; }
+    .equipo-badge-txt { font-family: var(--fu); font-size: .5rem; letter-spacing: .2em; text-transform: uppercase; color: var(--wd); margin-top: .3rem; }
+
+    /* ── MODALES LEGALES ── */
+    .modal-overlay {
+      position: fixed; inset: 0; 
+      background: rgba(10, 20, 15, .95);
+      backdrop-filter: blur(10px);
+      z-index: 9000;
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .modal-overlay.active { display: flex; opacity: 1; }
+    .modal-content {
+      background: var(--gd);
+      border: 1px solid rgba(201,168,76,.2);
+      max-width: 800px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      padding: 3rem;
+    }
+    .modal-content::-webkit-scrollbar { width: 6px; }
+    .modal-content::-webkit-scrollbar-track { background: rgba(201,168,76,.05); }
+    .modal-content::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); border-radius: 3px; }
+    .modal-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: none; border: 1px solid rgba(201,168,76,.3);
+      color: var(--go); width: 40px; height: 40px;
+      font-size: 1.2rem; cursor: pointer;
+      transition: all .3s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-close:hover { background: rgba(201,168,76,.1); border-color: var(--go); }
+    .modal-header { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(201,168,76,.1); }
+    .modal-header h2 { font-family: var(--fd); font-size: 1.8rem; color: var(--w); margin-bottom: .5rem; }
+    .modal-header p { font-family: var(--fu); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--go); }
+    .modal-body h3 { font-family: var(--fd); font-size: 1.1rem; color: var(--gl); margin: 1.8rem 0 .8rem; }
+    .modal-body h3:first-child { margin-top: 0; }
+    .modal-body p { font-size: .95rem; font-weight: 300; color: var(--wd); line-height: 1.85; margin-bottom: 1rem; }
+    .modal-body ul { list-style: none; margin: 1rem 0; }
+    .modal-body ul li { 
+      font-size: .92rem; font-weight: 300; color: var(--wd); line-height: 1.7;
+      padding-left: 1.2rem; margin-bottom: .6rem; position: relative;
+    }
+    .modal-body ul li::before { content: '◆'; color: var(--go); font-size: .5rem; position: absolute; left: 0; top: .35rem; }
+    .modal-footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(201,168,76,.1); text-align: center; }
+    .modal-footer p { font-family: var(--fu); font-size: .7rem; color: rgba(201,168,76,.5); letter-spacing: .1em; }
+
+    @media (max-width: 900px) {
+      .equipo-grid { grid-template-columns: 1fr; }
+      .equipo-values { grid-template-columns: 1fr; }
+      .modal-content { padding: 2rem 1.5rem; }
     }
 
     /* ── ANIMATIONS ── */
@@ -1063,7 +1156,7 @@
   <a href="#d360"     onclick="closeMenu()">Práctica Jurídica</a>
   <a href="#areas"    onclick="closeMenu()">Otras Materias</a>
   <a href="#filosofia" onclick="closeMenu()">Principios</a>
-  <a href="#firma"    onclick="closeMenu()">La Firma</a>
+  <a href="#equipo"   onclick="closeMenu()">Quiénes Somos</a>
   <a href="#contacto" onclick="closeMenu()">Contacto</a>
   <a href="#contacto" onclick="closeMenu()" class="nav-cta" style="margin-top:.5rem">Solicitar Consulta</a>
 </div>
@@ -1075,7 +1168,7 @@
     <a href="#d360">Práctica Jurídica</a>
     <a href="#areas">Otras Materias</a>
     <a href="#filosofia">Principios</a>
-    <a href="#firma">La Firma</a>
+    <a href="#equipo">Quiénes Somos</a>
     <a href="#contacto">Contacto</a>
     <button class="lang-btn" onclick="toggleLang()">EN</button>
     <a href="#contacto" class="nav-cta">Consultar</a>
@@ -1113,7 +1206,7 @@
 
   <div class="h-inner">
     <div>
-      <p class="h-eye">Litigio Especializado · República Mexicana</p>
+      <p class="h-eye">Litigio Especializado</p>
       <h1 class="h-title">Casa Torres<em>S.C.</em></h1>
       <div class="h-badge">
         <div class="h-badge-dot"></div>
@@ -1359,6 +1452,50 @@
   </div>
 </section>
 
+<!-- QUIÉNES SOMOS -->
+<section id="equipo" class="sec">
+  <div class="sec-inner">
+    <div class="rv">
+      <div class="s-lbl-tag">La Firma</div>
+      <h2 class="s-title">Quiénes <em>Somos</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="equipo-grid">
+      <div class="equipo-content rv">
+        <p>Casa Torres S.C. es una firma jurídica mexicana fundada con el propósito de brindar representación legal de excelencia en las materias más complejas del derecho público. Nuestro equipo está conformado por profesionales con sólida formación académica y amplia experiencia en litigio constitucional, administrativo y penal.</p>
+        <p>Creemos en una práctica jurídica cercana, donde el cliente es el centro de cada estrategia. Nuestro modelo de firma boutique nos permite mantener un trato directo y personalizado, garantizando que cada asunto reciba la dedicación que merece.</p>
+        <div class="equipo-values">
+          <div class="eq-value">
+            <h4>Excelencia Técnica</h4>
+            <p>Formación continua y dominio profundo de cada materia que practicamos.</p>
+          </div>
+          <div class="eq-value">
+            <h4>Compromiso Ético</h4>
+            <p>Actuamos con integridad, transparencia y estricto apego a la deontología jurídica.</p>
+          </div>
+          <div class="eq-value">
+            <h4>Visión Estratégica</h4>
+            <p>Cada caso es analizado desde múltiples perspectivas para maximizar resultados.</p>
+          </div>
+          <div class="eq-value">
+            <h4>Trato Personalizado</h4>
+            <p>Comunicación directa y constante con nuestros representados.</p>
+          </div>
+        </div>
+      </div>
+      <div class="equipo-visual rv">
+        <div class="equipo-placeholder">
+          <span class="equipo-placeholder-text">Fotografía del equipo · Próximamente</span>
+        </div>
+        <div class="equipo-badge">
+          <div class="equipo-badge-num">100%</div>
+          <div class="equipo-badge-txt">Dedicación a cada caso</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACTO -->
 <section id="contacto" class="sp">
   <div class="inn">
@@ -1370,15 +1507,15 @@
         <div class="ct-dets">
           <div class="ct-item">
             <div class="ct-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div>
-            <div class="ct-txt"><strong>Correo Electrónico</strong>contacto@casatorres.mx</div>
+            <div class="ct-txt"><strong>Correo Electrónico</strong>contacto@casatorreslaw.com</div>
           </div>
           <div class="ct-item">
             <div class="ct-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
-            <div class="ct-txt"><strong>Teléfono</strong>+52 (55) 0000-0000</div>
+            <div class="ct-txt"><strong>Teléfono</strong>+52 (81) 0000-0000</div>
           </div>
           <div class="ct-item">
             <div class="ct-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div class="ct-txt"><strong>Domicilio</strong>Ciudad de México, México</div>
+            <div class="ct-txt"><strong>Domicilio</strong>Monterrey, Nuevo León</div>
           </div>
 
         </div>
@@ -1390,7 +1527,7 @@
         </div>
         <div class="frow">
           <div class="fg"><label>Correo Electrónico</label><input type="email" placeholder="correo@ejemplo.com"/></div>
-          <div class="fg"><label>Teléfono de Contacto</label><input type="tel" placeholder="+52 (55) 0000-0000"/></div>
+          <div class="fg"><label>Teléfono de Contacto</label><input type="tel" placeholder="+52 (81) 0000-0000"/></div>
         </div>
         <div class="fg">
           <label>Materia del Asunto</label>
@@ -1421,7 +1558,7 @@
   <div class="fm">
     <div class="fb-brand">
       <div class="fb-name">CASA TORRES S.C.</div>
-      <div class="fb-sub">Firma Jurídica · República Mexicana</div>
+      <div class="fb-sub">Firma Jurídica</div>
       <p>Litigio especializado en derecho público. Práctica concentrada en materia constitucional, administrativa y penal.</p>
     </div>
     <div class="fc-col">
@@ -1436,18 +1573,18 @@
     <div class="fc-col">
       <h5>La Firma</h5>
       <ul>
+        <li><a href="#equipo">Quiénes Somos</a></li>
         <li><a href="#filosofia">Principios Rectores</a></li>
         <li><a href="#firma">Identidad Institucional</a></li>
-        <li><a href="#metodo">Metodología</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </div>
     <div class="fc-col">
       <h5>Información Legal</h5>
       <ul>
-        <li><a href="#">Aviso de Privacidad</a></li>
-        <li><a href="#">Términos de Uso</a></li>
-        <li><a href="#">Código de Ética</a></li>
+        <li><a href="javascript:void(0)" onclick="openModal('modalPrivacidad')">Aviso de Privacidad</a></li>
+        <li><a href="javascript:void(0)" onclick="openModal('modalTerminos')">Términos de Uso</a></li>
+        <li><a href="javascript:void(0)" onclick="openModal('modalEtica')">Código de Ética</a></li>
       </ul>
     </div>
   </div>
@@ -1459,6 +1596,309 @@
     </div>
   </div>
 </footer>
+
+<!-- MODAL: AVISO DE PRIVACIDAD -->
+<div class="modal-overlay" id="modalPrivacidad">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modalPrivacidad')">✕</button>
+    <div class="modal-header">
+      <h2>Aviso de Privacidad Integral</h2>
+      <p>Casa Torres S.C. · Última actualización: Marzo 2026</p>
+    </div>
+    <div class="modal-body">
+      <h3>I. Identidad y Domicilio del Responsable</h3>
+      <p>Casa Torres, Sociedad Civil (en adelante "Casa Torres S.C.", "la Firma", "nosotros" o "el Responsable"), con domicilio en Monterrey, Nuevo León, México, es responsable del tratamiento de sus datos personales conforme a lo dispuesto por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su Reglamento y los Lineamientos del Aviso de Privacidad publicados en el Diario Oficial de la Federación.</p>
+
+      <h3>II. Datos Personales que Recabamos</h3>
+      <p>Para las finalidades descritas en el presente Aviso, podemos recabar las siguientes categorías de datos personales:</p>
+      <ul>
+        <li><strong>Datos de identificación:</strong> nombre completo, fecha y lugar de nacimiento, nacionalidad, estado civil, CURP, RFC, número de identificación oficial, fotografía</li>
+        <li><strong>Datos de contacto:</strong> domicilio particular y/o fiscal, correo electrónico, números telefónicos fijos y móviles</li>
+        <li><strong>Datos laborales y profesionales:</strong> ocupación, cargo, nombre del empleador, domicilio laboral</li>
+        <li><strong>Datos patrimoniales y financieros:</strong> información bancaria para facturación, datos fiscales</li>
+        <li><strong>Datos relacionados con el asunto jurídico:</strong> información fáctica, documental y procesal necesaria para la prestación de servicios legales</li>
+      </ul>
+      <p><strong>Datos personales sensibles:</strong> En determinados casos, podríamos recabar datos sensibles relacionados con procedimientos penales, estado de salud, origen étnico o racial, u otros que la ley considera como tales. Estos datos serán tratados con las medidas de seguridad reforzadas que establece la normatividad aplicable y únicamente para las finalidades estrictamente necesarias.</p>
+
+      <h3>III. Finalidades del Tratamiento</h3>
+      <p><strong>Finalidades primarias (necesarias para la relación jurídica):</strong></p>
+      <ul>
+        <li>Evaluar la viabilidad de los asuntos jurídicos que nos sean consultados</li>
+        <li>Prestar los servicios profesionales de representación legal contratados</li>
+        <li>Elaborar, formalizar y dar seguimiento a contratos de prestación de servicios</li>
+        <li>Realizar actuaciones procesales ante tribunales, autoridades administrativas y organismos jurisdiccionales nacionales e internacionales</li>
+        <li>Emitir facturas y comprobantes fiscales</li>
+        <li>Cumplir con obligaciones legales, fiscales, procesales y regulatorias</li>
+        <li>Dar cumplimiento a resoluciones judiciales o administrativas</li>
+        <li>Atender requerimientos de autoridades competentes</li>
+      </ul>
+      <p><strong>Finalidades secundarias (no necesarias, pero legítimas):</strong></p>
+      <ul>
+        <li>Enviar comunicaciones informativas sobre cambios legislativos, jurisprudenciales o regulatorios relevantes</li>
+        <li>Invitar a eventos académicos, conferencias o seminarios organizados por la Firma</li>
+        <li>Realizar análisis estadísticos internos</li>
+      </ul>
+      <p>Si usted no desea que sus datos sean tratados para finalidades secundarias, puede manifestarlo enviando un correo a: <strong>privacidad@casatorreslaw.com</strong></p>
+
+      <h3>IV. Mecanismos de Obtención de Datos</h3>
+      <p>Recabamos sus datos personales de manera:</p>
+      <ul>
+        <li><strong>Directa:</strong> cuando usted nos los proporciona por cualquier medio (presencial, telefónico, electrónico, formularios web)</li>
+        <li><strong>Indirecta:</strong> a través de fuentes de acceso público, transferencias legítimas de terceros, o documentos que obren en expedientes judiciales o administrativos</li>
+      </ul>
+
+      <h3>V. Transferencias de Datos</h3>
+      <p>Sus datos personales podrán ser transferidos dentro y fuera del país a las siguientes categorías de destinatarios:</p>
+      <ul>
+        <li>Autoridades judiciales, administrativas, fiscales o regulatorias, cuando exista obligación legal o requerimiento fundado</li>
+        <li>Tribunales nacionales e internacionales en el marco de procedimientos jurisdiccionales</li>
+        <li>Peritos, consultores externos o profesionales cuyos servicios sean necesarios para el asunto</li>
+        <li>Instituciones financieras para efectos de facturación y cobro</li>
+        <li>Sociedades controladoras, subsidiarias o afiliadas de la Firma</li>
+      </ul>
+      <p>Las transferencias señaladas no requieren su consentimiento conforme al artículo 37 de la LFPDPPP, al ser necesarias para el cumplimiento de obligaciones legales, la defensa de derechos en procedimientos jurisdiccionales, o el mantenimiento de una relación jurídica.</p>
+
+      <h3>VI. Derechos ARCO</h3>
+      <p>Usted tiene derecho a:</p>
+      <ul>
+        <li><strong>Acceder</strong> a sus datos personales en nuestra posesión y conocer el tratamiento que les damos</li>
+        <li><strong>Rectificar</strong> sus datos cuando sean inexactos o incompletos</li>
+        <li><strong>Cancelar</strong> sus datos cuando considere que no están siendo tratados conforme a la ley</li>
+        <li><strong>Oponerse</strong> al tratamiento de sus datos para fines específicos</li>
+      </ul>
+      <p>Para ejercer sus derechos ARCO, presente su solicitud por escrito a: <strong>privacidad@casatorreslaw.com</strong>, incluyendo: (i) nombre completo y domicilio para comunicarle la respuesta; (ii) documentos que acrediten su identidad o representación legal; (iii) descripción clara de los datos y derechos que desea ejercer; (iv) cualquier elemento que facilite la localización de sus datos.</p>
+      <p>Responderemos en un plazo máximo de 20 días hábiles. De ser procedente, la determinación se hará efectiva dentro de los 15 días hábiles siguientes.</p>
+
+      <h3>VII. Revocación del Consentimiento</h3>
+      <p>Usted puede revocar el consentimiento otorgado para el tratamiento de sus datos mediante solicitud enviada a <strong>privacidad@casatorreslaw.com</strong>. Sin embargo, es importante que considere que no en todos los casos podremos atender su solicitud de forma inmediata, particularmente cuando el tratamiento sea necesario para el cumplimiento de obligaciones legales, la defensa de derechos en procedimientos judiciales, o la ejecución de un contrato vigente.</p>
+
+      <h3>VIII. Limitación de Uso y Divulgación</h3>
+      <p>Para limitar el uso o divulgación de sus datos, puede inscribirse en el Registro Público para Evitar Publicidad (REPEP) de la PROFECO, o bien enviar su solicitud a <strong>privacidad@casatorreslaw.com</strong></p>
+
+      <h3>IX. Uso de Cookies y Tecnologías de Rastreo</h3>
+      <p>Nuestro sitio web puede utilizar cookies, web beacons y otras tecnologías de rastreo para mejorar su experiencia de navegación. Estas tecnologías recaban datos como: tipo de navegador, sistema operativo, páginas visitadas, duración de la visita y dirección IP. Puede deshabilitar las cookies desde la configuración de su navegador.</p>
+
+      <h3>X. Medidas de Seguridad</h3>
+      <p>Hemos implementado medidas de seguridad administrativas, técnicas y físicas para proteger sus datos personales contra daño, pérdida, alteración, destrucción, uso, acceso o tratamiento no autorizado. Nuestro personal está sujeto a obligaciones de confidencialidad y al secreto profesional que rige la práctica de la abogacía.</p>
+
+      <h3>XI. Modificaciones al Aviso de Privacidad</h3>
+      <p>Nos reservamos el derecho de modificar el presente Aviso de Privacidad en cualquier momento. Las modificaciones estarán disponibles en nuestro sitio web: <strong>www.casatorreslaw.com</strong>. El uso continuado de nuestros servicios después de la publicación de cambios constituye su aceptación de los mismos.</p>
+
+      <h3>XII. Autoridad Competente</h3>
+      <p>Si considera que su derecho a la protección de datos personales ha sido vulnerado, puede acudir al Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI): www.inai.org.mx</p>
+
+      <h3>XIII. Consentimiento</h3>
+      <p>Al proporcionar sus datos personales por cualquier medio, usted manifiesta haber leído y comprendido el presente Aviso de Privacidad, aceptando sus términos y condiciones. En caso de datos sensibles, su consentimiento será recabado de forma expresa y por escrito.</p>
+    </div>
+    <div class="modal-footer">
+      <p>© 2026 Casa Torres S.C. · Todos los derechos reservados</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: TÉRMINOS DE USO -->
+<div class="modal-overlay" id="modalTerminos">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modalTerminos')">✕</button>
+    <div class="modal-header">
+      <h2>Términos y Condiciones de Uso</h2>
+      <p>Casa Torres S.C. · Última actualización: Marzo 2026</p>
+    </div>
+    <div class="modal-body">
+      <h3>I. Aceptación de los Términos</h3>
+      <p>El acceso, navegación y uso de este sitio web (en adelante "el Sitio"), propiedad de Casa Torres, Sociedad Civil (en adelante "Casa Torres S.C." o "la Firma"), implica la aceptación plena, expresa e incondicional de los presentes Términos y Condiciones de Uso en su versión vigente al momento del acceso. <strong>Si usted no está de acuerdo con la totalidad de estos términos, debe abstenerse de acceder, navegar o utilizar este Sitio de cualquier forma.</strong></p>
+      <p>Casa Torres S.C. se reserva el derecho de modificar estos Términos en cualquier momento y sin previo aviso. Las modificaciones entrarán en vigor desde su publicación en el Sitio. El uso continuado del Sitio después de cualquier modificación constituye su aceptación de los nuevos términos.</p>
+
+      <h3>II. Naturaleza Informativa — Ausencia de Relación Abogado-Cliente</h3>
+      <p><strong>DECLARACIÓN IMPORTANTE:</strong> La información contenida en este Sitio tiene carácter estrictamente informativo, ilustrativo y de divulgación general. Bajo ninguna circunstancia debe interpretarse como asesoría jurídica, opinión legal, recomendación profesional o sustituto del consejo de un abogado licenciado para su caso específico.</p>
+      <p><strong>El simple acceso a este Sitio, el envío de información a través de formularios de contacto, el intercambio de correos electrónicos o cualquier otra forma de comunicación NO establece, crea ni constituye una relación abogado-cliente entre usted y Casa Torres S.C.</strong> La relación profesional únicamente se formaliza mediante la suscripción de un contrato de prestación de servicios profesionales por escrito.</p>
+      <p>No tome decisiones legales basándose únicamente en la información de este Sitio. Consulte siempre a un profesional del derecho debidamente autorizado para ejercer en su jurisdicción.</p>
+
+      <h3>III. Exención de Garantías</h3>
+      <p><strong>Este Sitio se proporciona "TAL CUAL" y "SEGÚN DISPONIBILIDAD", sin garantías de ningún tipo, ya sean expresas o implícitas.</strong> Casa Torres S.C. expresamente excluye y rechaza, en la máxima medida permitida por la ley aplicable:</p>
+      <ul>
+        <li>Cualquier garantía de comerciabilidad, idoneidad para un propósito particular, título o no infracción</li>
+        <li>Garantías de que el Sitio funcionará de manera ininterrumpida, oportuna, segura o libre de errores</li>
+        <li>Garantías de que la información contenida sea precisa, completa, actualizada, confiable o aplicable a su situación particular</li>
+        <li>Garantías de que el Sitio o los servidores estén libres de virus u otros componentes dañinos</li>
+        <li>Garantías respecto a los resultados que puedan obtenerse del uso de la información del Sitio</li>
+      </ul>
+      <p>La información legal puede cambiar rápidamente debido a reformas legislativas, nuevas interpretaciones judiciales o cambios en criterios administrativos. Casa Torres S.C. no garantiza que la información del Sitio refleje el estado actual de la ley.</p>
+
+      <h3>IV. Limitación de Responsabilidad</h3>
+      <p><strong>EN LA MÁXIMA MEDIDA PERMITIDA POR LA LEY APLICABLE, CASA TORRES S.C., SUS SOCIOS, ABOGADOS, EMPLEADOS, AGENTES, REPRESENTANTES, PROVEEDORES Y LICENCIANTES NO SERÁN RESPONSABLES ANTE USTED NI ANTE TERCEROS POR:</strong></p>
+      <ul>
+        <li>Daños directos, indirectos, incidentales, especiales, consecuentes, punitivos o ejemplares de cualquier naturaleza</li>
+        <li>Pérdida de ganancias, ingresos, datos, uso, fondo de comercio u otras pérdidas intangibles</li>
+        <li>Daños derivados del acceso, uso o imposibilidad de uso del Sitio</li>
+        <li>Daños resultantes de cualquier contenido, información, producto o servicio obtenido a través del Sitio</li>
+        <li>Daños causados por acceso no autorizado a nuestros servidores o a su información personal</li>
+        <li>Daños por virus, troyanos o componentes dañinos transmitidos a través del Sitio</li>
+        <li>Daños derivados de errores, omisiones, interrupciones, defectos, demoras o cualquier falla en el Sitio</li>
+      </ul>
+      <p><strong>Esta limitación aplica independientemente de la teoría legal bajo la cual se reclame (contrato, responsabilidad civil, negligencia, responsabilidad objetiva u otra), aun cuando Casa Torres S.C. haya sido advertida de la posibilidad de tales daños.</strong></p>
+      <p>En jurisdicciones que no permitan la exclusión de ciertas garantías o la limitación de responsabilidad por daños consecuentes o incidentales, nuestra responsabilidad se limitará a la máxima medida permitida por la ley.</p>
+
+      <h3>V. Indemnización</h3>
+      <p>Usted acepta defender, indemnizar y mantener indemne a Casa Torres S.C., sus socios, abogados, empleados, agentes y representantes, de y contra cualquier reclamación, demanda, daño, obligación, pérdida, responsabilidad, costo o deuda, incluyendo honorarios razonables de abogados, que surjan de:</p>
+      <ul>
+        <li>Su uso del Sitio o cualquier servicio relacionado</li>
+        <li>Su violación de estos Términos y Condiciones</li>
+        <li>Su violación de derechos de terceros, incluyendo derechos de propiedad intelectual</li>
+        <li>Cualquier contenido que usted envíe, publique o transmita a través del Sitio</li>
+        <li>Su conducta ilegal o negligente en relación con el Sitio</li>
+      </ul>
+
+      <h3>VI. Propiedad Intelectual</h3>
+      <p>Todos los contenidos del Sitio, incluyendo pero no limitado a: textos, diseños, logotipos, marcas, nombres comerciales, imágenes, gráficos, íconos, fotografías, código fuente, estructura, selección y disposición de contenidos, son propiedad exclusiva de Casa Torres S.C. o se utilizan bajo licencia legítima, y están protegidos por las leyes mexicanas e internacionales de propiedad intelectual.</p>
+      <p><strong>Queda estrictamente prohibido:</strong></p>
+      <ul>
+        <li>Reproducir, copiar, distribuir, modificar, exhibir públicamente o crear obras derivadas</li>
+        <li>Utilizar técnicas de minería de datos, robots, o métodos similares de recolección</li>
+        <li>Descompilar, aplicar ingeniería inversa o intentar obtener el código fuente</li>
+        <li>Remover avisos de derechos de autor, marcas u otros avisos de propiedad</li>
+        <li>Utilizar las marcas de Casa Torres S.C. sin autorización escrita previa</li>
+      </ul>
+
+      <h3>VII. Uso Aceptable</h3>
+      <p>Al utilizar el Sitio, usted se compromete a NO:</p>
+      <ul>
+        <li>Utilizar el Sitio para fines ilícitos o contrarios a la moral y el orden público</li>
+        <li>Intentar obtener acceso no autorizado a sistemas, redes o datos</li>
+        <li>Transmitir virus, malware o código malicioso</li>
+        <li>Suplantar la identidad de personas o entidades</li>
+        <li>Interferir con el funcionamiento del Sitio o sobrecargar su infraestructura</li>
+        <li>Utilizar el Sitio para enviar comunicaciones no solicitadas (spam)</li>
+        <li>Recopilar información de usuarios sin su consentimiento</li>
+        <li>Utilizar el Sitio de manera que pueda dañar la reputación de Casa Torres S.C.</li>
+      </ul>
+
+      <h3>VIII. Enlaces a Terceros</h3>
+      <p>El Sitio puede contener enlaces a sitios web de terceros. Estos enlaces se proporcionan únicamente para su conveniencia. Casa Torres S.C. no tiene control sobre dichos sitios, no los respalda y <strong>no asume ninguna responsabilidad por su contenido, políticas de privacidad, prácticas, productos o servicios.</strong> El acceso a sitios de terceros es bajo su propio riesgo.</p>
+
+      <h3>IX. Confidencialidad de Comunicaciones</h3>
+      <p><strong>ADVERTENCIA:</strong> Las comunicaciones enviadas a través de Internet, incluyendo correos electrónicos y formularios web, no son inherentemente seguras. Hasta que se formalice una relación abogado-cliente mediante contrato escrito, cualquier información que nos envíe podría no estar protegida por el secreto profesional. No envíe información confidencial o sensible hasta que se haya establecido formalmente dicha relación.</p>
+
+      <h3>X. Disponibilidad del Sitio</h3>
+      <p>Casa Torres S.C. no garantiza la disponibilidad continua del Sitio. Podemos suspender, restringir o terminar el acceso al Sitio en cualquier momento, por cualquier razón, sin previo aviso y sin responsabilidad alguna.</p>
+
+      <h3>XI. Divisibilidad</h3>
+      <p>Si cualquier disposición de estos Términos se considera inválida, ilegal o inaplicable por un tribunal competente, dicha disposición se modificará e interpretará para cumplir los objetivos de la disposición original en la máxima medida permitida por la ley, y las disposiciones restantes continuarán en pleno vigor y efecto.</p>
+
+      <h3>XII. Renuncia</h3>
+      <p>La falta de Casa Torres S.C. de hacer cumplir cualquier derecho o disposición de estos Términos no constituirá una renuncia a dicho derecho o disposición. Cualquier renuncia debe ser por escrito y firmada por un representante autorizado de Casa Torres S.C.</p>
+
+      <h3>XIII. Acuerdo Completo</h3>
+      <p>Estos Términos constituyen el acuerdo completo entre usted y Casa Torres S.C. respecto al uso del Sitio, y sustituyen cualquier acuerdo, comunicación o propuesta anterior, ya sea oral o escrita.</p>
+
+      <h3>XIV. Ley Aplicable y Jurisdicción</h3>
+      <p>Los presentes Términos se rigen e interpretan de conformidad con las leyes de los Estados Unidos Mexicanos. <strong>Para cualquier controversia derivada de estos Términos o del uso del Sitio, las partes se someten expresamente a la jurisdicción exclusiva de los tribunales competentes de Monterrey, Nuevo León, México, renunciando a cualquier otro fuero que pudiera corresponderles por razón de su domicilio presente o futuro.</strong></p>
+
+      <h3>XV. Contacto</h3>
+      <p>Para cualquier pregunta sobre estos Términos, puede contactarnos en: <strong>legal@casatorreslaw.com</strong></p>
+    </div>
+    <div class="modal-footer">
+      <p>© 2026 Casa Torres S.C. · Todos los derechos reservados</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: CÓDIGO DE ÉTICA -->
+<div class="modal-overlay" id="modalEtica">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modalEtica')">✕</button>
+    <div class="modal-header">
+      <h2>Código de Ética y Conducta Profesional</h2>
+      <p>Casa Torres S.C. · Principios rectores de nuestra práctica</p>
+    </div>
+    <div class="modal-body">
+      <h3>Preámbulo</h3>
+      <p>Casa Torres, Sociedad Civil, adopta el presente Código de Ética y Conducta Profesional como marco normativo que rige la actuación de todos sus integrantes. Este Código se fundamenta en los principios deontológicos de la abogacía, la Ley Reglamentaria del Artículo 5° Constitucional relativo al ejercicio de las profesiones, el Código de Ética del Ilustre y Nacional Colegio de Abogados de México, y las mejores prácticas internacionales de la profesión jurídica.</p>
+
+      <h3>I. Principios Fundamentales</h3>
+      
+      <p><strong>1.1 Probidad e Integridad</strong></p>
+      <p>Actuamos con honestidad, rectitud y buena fe en todas nuestras relaciones profesionales. Rechazamos cualquier forma de corrupción, soborno o conducta deshonesta. Nuestra palabra y nuestros compromisos son sagrados.</p>
+      
+      <p><strong>1.2 Independencia Profesional</strong></p>
+      <p>Ejercemos nuestra profesión con absoluta libertad de criterio técnico, sin ceder ante presiones de clientes, autoridades, terceros o intereses propios que pudieran comprometer nuestro juicio profesional. La independencia es condición esencial para el correcto ejercicio de la abogacía.</p>
+      
+      <p><strong>1.3 Competencia y Diligencia</strong></p>
+      <p>Solo aceptamos asuntos para los cuales contamos con la competencia técnica necesaria. Nos mantenemos en constante actualización profesional. Atendemos cada asunto con la diligencia, dedicación y prontitud que requiere, empleando todos los recursos lícitos disponibles para la defensa de los intereses legítimos de nuestros clientes.</p>
+      
+      <p><strong>1.4 Lealtad</strong></p>
+      <p>Guardamos fidelidad a los intereses legítimos de nuestros clientes, actuando siempre en su mejor beneficio dentro del marco de la ley. La lealtad se extiende a la confidencialidad, la ausencia de conflictos de interés y el compromiso genuino con el asunto encomendado.</p>
+
+      <h3>II. Secreto Profesional</h3>
+      <p><strong>2.1</strong> Guardamos estricta e inviolable confidencialidad sobre toda información que nos sea revelada por nuestros clientes, cualquiera que sea su naturaleza, fuente u origen.</p>
+      <p><strong>2.2</strong> El deber de secreto profesional se extiende a todos los miembros de la Firma —socios, abogados, pasantes, personal administrativo y proveedores— quienes están obligados contractualmente a observarlo.</p>
+      <p><strong>2.3</strong> El secreto profesional subsiste indefinidamente, aun después de concluida la relación profesional o el fallecimiento del cliente.</p>
+      <p><strong>2.4</strong> Solo nos relevaremos del secreto profesional en los supuestos expresamente previstos por la ley o cuando sea estrictamente necesario para nuestra propia defensa en caso de imputaciones del cliente.</p>
+      <p><strong>2.5</strong> Los expedientes, documentos e información de nuestros clientes se resguardan con medidas de seguridad físicas, técnicas y administrativas adecuadas.</p>
+
+      <h3>III. Conflicto de Intereses</h3>
+      <p><strong>3.1</strong> Previo a la aceptación de cualquier asunto, verificamos que no exista conflicto de intereses con clientes actuales, anteriores o potenciales.</p>
+      <p><strong>3.2</strong> No aceptamos asuntos en los que:</p>
+      <ul>
+        <li>Exista contraposición directa o indirecta con intereses de otro cliente</li>
+        <li>La información confidencial de un cliente pudiera beneficiar a otro</li>
+        <li>Nuestra independencia de criterio pudiera verse comprometida</li>
+        <li>Tengamos interés personal, económico o de cualquier índole en el resultado</li>
+        <li>Exista parentesco o relación cercana con la contraparte o el juzgador</li>
+      </ul>
+      <p><strong>3.3</strong> Cuando el conflicto surja durante la representación, lo comunicamos de inmediato al cliente y, de ser necesario, renunciamos al asunto con la debida anticipación para no causar perjuicio.</p>
+      <p><strong>3.4</strong> Solo aceptamos asuntos con potencial conflicto cuando todas las partes involucradas, debidamente informadas, otorguen su consentimiento expreso por escrito.</p>
+
+      <h3>IV. Relación con los Clientes</h3>
+      <p><strong>4.1 Comunicación</strong></p>
+      <p>Mantenemos comunicación clara, oportuna, veraz y comprensible con nuestros clientes. Les informamos regularmente sobre el estado de sus asuntos, las actuaciones realizadas, los plazos relevantes y cualquier circunstancia significativa.</p>
+      
+      <p><strong>4.2 Información sobre Riesgos y Probabilidades</strong></p>
+      <p>Proporcionamos a nuestros clientes una evaluación objetiva y realista sobre las fortalezas, debilidades, riesgos y probabilidades de éxito de sus asuntos. No generamos expectativas infundadas ni garantizamos resultados que dependan de decisiones de terceros o autoridades.</p>
+      
+      <p><strong>4.3 Instrucciones del Cliente</strong></p>
+      <p>Respetamos la autonomía de decisión de nuestros clientes sobre los aspectos fundamentales de sus asuntos. Sin embargo, nos reservamos el derecho de renunciar cuando las instrucciones del cliente sean contrarias a la ley, a la ética profesional o a nuestra conciencia.</p>
+      
+      <p><strong>4.4 Manejo de Bienes y Fondos</strong></p>
+      <p>Los bienes, documentos y fondos de nuestros clientes se mantienen separados de los propios y se manejan con absoluta transparencia y rendición de cuentas.</p>
+
+      <h3>V. Honorarios</h3>
+      <p><strong>5.1</strong> Nuestros honorarios son justos, razonables y proporcionales a la complejidad del asunto, el tiempo dedicado, la especialización requerida, la urgencia, la responsabilidad asumida y los usos de la profesión.</p>
+      <p><strong>5.2</strong> Informamos con claridad y anticipación sobre el monto estimado de honorarios, la forma de pago, los gastos previsibles y las condiciones de facturación, formalizando estos aspectos por escrito.</p>
+      <p><strong>5.3</strong> No condicionamos nuestra actuación profesional a la obtención de honorarios que excedan lo razonable ni aprovechamos la urgencia o vulnerabilidad del cliente para fijar honorarios desproporcionados.</p>
+
+      <h3>VI. Relación con Tribunales y Autoridades</h3>
+      <p><strong>6.1</strong> Actuamos con respeto, decoro y probidad ante tribunales, jueces, magistrados, autoridades administrativas y funcionarios públicos.</p>
+      <p><strong>6.2</strong> No empleamos medios ilícitos, engañosos, dilatorios de mala fe, ni ejercemos presiones indebidas para influir en las decisiones de los juzgadores.</p>
+      <p><strong>6.3</strong> Presentamos los hechos con veracidad y el derecho con corrección técnica, sin falsear, ocultar o distorsionar información relevante para el proceso.</p>
+      <p><strong>6.4</strong> Cumplimos puntualmente con los plazos procesales, los requerimientos judiciales y las obligaciones derivadas de nuestra calidad de auxiliares de la administración de justicia.</p>
+
+      <h3>VII. Relación entre Colegas</h3>
+      <p><strong>7.1</strong> Mantenemos relaciones de respeto, cordialidad y buena fe con otros profesionales del derecho.</p>
+      <p><strong>7.2</strong> La competencia profesional se basa exclusivamente en la calidad de nuestros servicios, no en prácticas desleales, denigratorias o contrarias a la dignidad de la profesión.</p>
+      <p><strong>7.3</strong> No captamos clientes de colegas mediante métodos indebidos ni intervenimos en asuntos en los que otro abogado esté actuando sin su conocimiento.</p>
+
+      <h3>VIII. Publicidad y Comunicación Pública</h3>
+      <p><strong>8.1</strong> Nuestra publicidad es veraz, digna y respetuosa de la profesión. No realizamos promesas de resultados, comparaciones denigratorias con colegas ni afirmaciones engañosas.</p>
+      <p><strong>8.2</strong> Guardamos prudencia en nuestras declaraciones públicas sobre asuntos en curso, respetando la confidencialidad, la presunción de inocencia y la dignidad de las partes involucradas.</p>
+
+      <h3>IX. Responsabilidad Social</h3>
+      <p><strong>9.1</strong> Reconocemos nuestra responsabilidad con la sociedad y el Estado de Derecho. Cuando nuestras circunstancias lo permiten, contribuimos al acceso a la justicia mediante servicios pro bono para personas en situación de vulnerabilidad.</p>
+      <p><strong>9.2</strong> Participamos activamente en el fortalecimiento de las instituciones jurídicas y el perfeccionamiento del sistema de justicia.</p>
+
+      <h3>X. Cumplimiento y Sanciones Internas</h3>
+      <p><strong>10.1</strong> Todos los integrantes de Casa Torres S.C. están obligados a conocer, observar y promover el cumplimiento de este Código.</p>
+      <p><strong>10.2</strong> Las violaciones a este Código serán evaluadas internamente y podrán dar lugar a medidas correctivas, incluyendo la terminación de la relación laboral o societaria.</p>
+      <p><strong>10.3</strong> Cualquier persona puede reportar conductas que pudieran constituir violaciones a este Código al correo: <strong>etica@casatorreslaw.com</strong></p>
+
+      <h3>XI. Vigencia</h3>
+      <p>El presente Código entra en vigor a partir de su publicación y permanecerá vigente hasta que sea modificado o sustituido por disposición de los socios de Casa Torres S.C.</p>
+    </div>
+    <div class="modal-footer">
+      <p>© 2026 Casa Torres S.C. · Todos los derechos reservados</p>
+    </div>
+  </div>
+</div>
 
 <script>
 /* ── PARTÍCULAS FLOTANTES ── */
@@ -1697,6 +2137,45 @@ function handleSubmit(e) {
     btn.style.transform = 'scale(1)';
   }, 1500);
 }
+
+/* ── MODALES LEGALES ── */
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('active'), 10);
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('active');
+    setTimeout(() => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }, 300);
+  }
+}
+
+// Cerrar modal al hacer clic fuera del contenido
+document.querySelectorAll('.modal-overlay').forEach(modal => {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal(modal.id);
+    }
+  });
+});
+
+// Cerrar modal con tecla Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+      closeModal(modal.id);
+    });
+  }
+});
 
 /* ── SMOOTH SCROLL MEJORADO ── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
